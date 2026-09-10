@@ -78,7 +78,7 @@ export default function Header({
 
   return (
     <header className="sticky top-0 z-50 w-full bg-cream/90 backdrop-blur-md transition-all duration-200 border-b border-dark/5">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12 h-16 sm:h-20 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 h-14 sm:h-16 lg:h-20 flex items-center justify-between">
         
         {/* Logo (returns to Home) */}
         <Link
@@ -92,7 +92,7 @@ export default function Header({
             width={140}
             height={38}
             priority
-            className="h-8 sm:h-9 w-auto object-contain"
+            className="h-7 sm:h-8 lg:h-9 w-auto object-contain"
           />
         </Link>
 
@@ -171,14 +171,15 @@ export default function Header({
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer: Absolute floating overlay that does NOT push the hero section down */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b border-dark/10 bg-cream px-6 py-5 overflow-hidden shadow-lg"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute top-full left-0 w-full md:hidden border-b border-dark/15 bg-cream/95 backdrop-blur-xl px-6 py-5 overflow-hidden shadow-2xl z-50"
           >
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (

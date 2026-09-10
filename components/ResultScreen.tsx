@@ -222,16 +222,16 @@ export default function ResultScreen({
     <div className="w-full flex-1 flex flex-col items-center justify-center py-4 px-4 sm:px-8 lg:px-12 max-w-[1020px] mx-auto select-none my-auto">
       
       {/* Top Bar: Navigation Controls & Match Recovery */}
-      <div className="w-full flex items-center justify-between mb-3 shrink-0">
+      <div className="w-full flex items-center justify-between mb-2 sm:mb-3 shrink-0">
         <button
           onClick={onBackToHome}
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-dark/70 hover:text-dark transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-dark/70 hover:text-dark transition-colors cursor-pointer shrink-0"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Home</span>
         </button>
 
-        {/* Return to Matched Plan Shortcut (If on a Wild Card) */}
+        {/* Return to Matched Plan Shortcut (Desktop only in top row to avoid mobile collisions) */}
         {showReturnToMatch && (
           <motion.button
             initial={{ opacity: 0, y: -4 }}
@@ -240,21 +240,39 @@ export default function ResultScreen({
               soundFX.playPop();
               onReturnToMatched();
             }}
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-dark px-3 py-1 rounded-full bg-primary/10 border border-primary/20 transition-all cursor-pointer"
+            className="hidden md:inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-dark px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 transition-all cursor-pointer truncate max-w-[340px]"
           >
-            <Undo2 className="w-3.5 h-3.5" />
-            <span>Back to matched plan ({matchedIdea.title})</span>
+            <Undo2 className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">Back to matched plan ({matchedIdea.title})</span>
           </motion.button>
         )}
 
         <button
           onClick={onStartOver}
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-dark/70 hover:text-primary transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-dark/70 hover:text-primary transition-colors cursor-pointer shrink-0"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Start Over</span>
         </button>
       </div>
+
+      {/* Return to Matched Plan Shortcut (Mobile / Tablet dedicated clean row below navigation) */}
+      {showReturnToMatch && (
+        <div className="w-full md:hidden flex justify-center -mt-0.5 mb-2.5 shrink-0">
+          <motion.button
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            onClick={() => {
+              soundFX.playPop();
+              onReturnToMatched();
+            }}
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-dark px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 transition-all cursor-pointer shadow-2xs max-w-[92%]"
+          >
+            <Undo2 className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">Back to matched plan ({matchedIdea.title})</span>
+          </motion.button>
+        </div>
+      )}
 
       {/* Main Headline with Flanking Hand-Drawn Bursts (Matching Screen 3 Mockup) */}
       <div className="relative text-center mb-3 shrink-0">
@@ -318,7 +336,7 @@ export default function ResultScreen({
               : { scale: 1, y: 0 }
           }
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative z-10 w-full bg-white rounded-3xl p-5 sm:p-6 lg:p-7 border border-dark/10 shadow-xl shadow-dark/5 flex flex-col justify-between overflow-hidden"
+          className="relative z-10 w-full bg-white rounded-3xl p-4 xs:p-5 sm:p-6 lg:p-7 border border-dark/10 shadow-xl shadow-dark/5 flex flex-col justify-between overflow-hidden"
         >
           {/* Radiant Glossy Light Sheen Sweep upon landing on selected idea */}
           {showSheen && (
@@ -333,7 +351,7 @@ export default function ResultScreen({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch flex-1">
             
             {/* Left Column: Proportional Image Container */}
-            <div className="lg:col-span-5 relative w-full h-52 sm:h-64 lg:h-full min-h-[260px] max-h-[440px] rounded-2xl overflow-hidden bg-cream shadow-xs">
+            <div className="lg:col-span-5 relative w-full h-48 xs:h-56 sm:h-64 lg:h-full min-h-[220px] sm:min-h-[260px] max-h-[440px] rounded-2xl overflow-hidden bg-cream shadow-xs">
               <Image
                 src={activeIdea.image}
                 alt={activeIdea.title}
@@ -513,7 +531,7 @@ export default function ResultScreen({
               </div>
 
               {/* Bottom Actions: Clean 2-Button Row (Matching Screen 3 Mockup) */}
-              <div className="mt-4 pt-3.5 border-t border-dark/8 flex flex-col sm:flex-row items-center gap-3 select-none">
+              <div className="mt-4 pt-3.5 border-t border-dark/8 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 select-none">
                 {/* Save Idea Button */}
                 <button
                   onClick={() => {
@@ -521,7 +539,7 @@ export default function ResultScreen({
                     onToggleSave(activeIdea);
                   }}
                   disabled={isShuffling}
-                  className={`w-full sm:flex-1 py-3 px-5 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 border transition-all duration-200 cursor-pointer ${
+                  className={`w-full sm:flex-1 py-3 sm:py-3.5 px-5 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 border transition-all duration-200 cursor-pointer ${
                     isSaved
                       ? "bg-secondary text-white border-secondary shadow-xs scale-[1.01]"
                       : "bg-white text-dark border-dark/20 hover:border-dark hover:bg-dark/5 shadow-xs"
@@ -538,7 +556,7 @@ export default function ResultScreen({
                 <button
                   onClick={handleSurpriseClick}
                   disabled={isShuffling}
-                  className={`w-full sm:flex-[1.4] py-3 px-6 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm active:scale-95 cursor-pointer ${
+                  className={`w-full sm:flex-[1.4] py-3 sm:py-3.5 px-6 rounded-full font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-sm active:scale-95 cursor-pointer ${
                     isShuffling
                       ? "bg-dark/80 text-cream/70 cursor-not-allowed"
                       : isSurprise

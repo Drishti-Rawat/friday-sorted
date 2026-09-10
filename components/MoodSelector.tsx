@@ -47,7 +47,7 @@ export default function MoodSelector({ onSelectMood }: MoodSelectorProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 sm:mb-10"
+          className="mb-6 sm:mb-10 text-center sm:text-left"
         >
           <h2 className="font-serif font-black text-3xl sm:text-4xl lg:text-[44px] tracking-tight text-dark">
             What kind of Friday are you having?
@@ -78,11 +78,13 @@ export default function MoodSelector({ onSelectMood }: MoodSelectorProps) {
                 soundFX.playPop();
                 onSelectMood(mood.id);
               }}
-              className={`group flex flex-col items-center text-center p-5 sm:p-6 rounded-3xl ${mood.bgColor} border ${mood.borderColor} ${hoverBorderColors[mood.id]} cursor-pointer select-none relative overflow-hidden`}
+              className={`group flex flex-col items-center text-center p-4 sm:p-6 rounded-3xl ${mood.bgColor} border ${mood.borderColor} ${hoverBorderColors[mood.id]} cursor-pointer select-none relative overflow-hidden ${
+                idx === 4 ? "col-span-2 sm:col-span-1" : ""
+              }`}
             >
               {/* Icon Container with subtle smooth scale */}
               <div
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-110 shadow-xs"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-3 sm:mb-4 transition-transform duration-200 group-hover:scale-110 shadow-xs"
                 style={{ backgroundColor: `${mood.themeColor}18` }}
               >
                 {getIcon(mood.icon, mood.themeColor)}

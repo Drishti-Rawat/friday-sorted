@@ -10,7 +10,17 @@ interface HeroProps {
 }
 
 export default function Hero({ onFindClick }: HeroProps) {
-  // Smooth mouse-follow 3D tilt for the polaroid collage
+  // Only enable 3D tilt on large desktop viewports (lg:) to prevent texture rasterization blur on sm/mobile devices
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useEffect(() => {
+    const update = () => setIsDesktop(window.innerWidth >= 1024);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Smooth mouse-follow 3D tilt for the polaroid collage (desktop only)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -49,7 +59,7 @@ export default function Hero({ onFindClick }: HeroProps) {
   };
 
   return (
-    <section className="relative w-full flex-1 flex items-center justify-center py-4 lg:py-6 overflow-hidden">
+    <section className="relative w-full flex-1 flex items-center justify-center py-2 sm:py-3 lg:py-6 overflow-hidden">
       {/* 1. Background Palm Leaf Silhouette on Top-Left */}
       <div className="absolute -top-16 -left-12 w-72 h-72 sm:w-96 sm:h-96 opacity-[0.08] pointer-events-none select-none -z-10 rotate-12">
         <svg viewBox="0 0 200 200" fill="currentColor" className="w-full h-full text-dark">
@@ -78,7 +88,7 @@ export default function Hero({ onFindClick }: HeroProps) {
       </motion.div>
 
       {/* 4. Main Content Container */}
-      <div className="max-w-[1280px] w-full mx-auto px-6 sm:px-10 lg:px-12">
+      <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
           
           {/* Left Column: Typography, Badges & CTA */}
@@ -86,32 +96,32 @@ export default function Hero({ onFindClick }: HeroProps) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 xl:col-span-5 flex flex-col items-start z-10"
+            className="lg:col-span-5 xl:col-span-5 flex flex-col items-start text-left z-10 w-full"
           >
             {/* Wavy squiggle & GOOD VIBES ONLY */}
-            <div className="flex flex-col items-start mb-2">
-              <svg viewBox="0 0 70 8" fill="none" className="w-12 h-2 text-accent mb-1">
+            <div className="flex flex-col items-start mb-1.5 sm:mb-2">
+              <svg viewBox="0 0 70 8" fill="none" className="w-8 sm:w-12 h-2 text-accent mb-1">
                 <path d="M2 4 Q 10 0, 18 4 T 34 4 T 50 4 T 66 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
               </svg>
-              <span className="text-secondary text-xs sm:text-sm font-extrabold tracking-[0.2em] uppercase">
+              <span className="text-secondary text-[11px] sm:text-sm font-extrabold tracking-[0.2em] uppercase">
                 GOOD VIBES ONLY
               </span>
             </div>
 
-            {/* Headline */}
-            <h1 className="tracking-tight leading-[0.96] text-dark">
+            {/* Responsive Fluid Headline */}
+            <h1 className="tracking-tight leading-[0.98] sm:leading-[0.96] text-dark w-full text-left">
               {/* Finally, with yellow double accent dashes */}
-              <span className="inline-flex items-center font-serif font-black text-5xl sm:text-6xl lg:text-[76px] xl:text-[84px]">
+              <span className="inline-flex items-center justify-start font-serif font-black text-[38px] xs:text-[46px] sm:text-6xl lg:text-[72px] xl:text-[82px]">
                 Finally,
                 {/* Accent dashes */}
-                <svg viewBox="0 0 28 28" fill="none" className="w-6 h-6 sm:w-8 sm:h-8 text-accent ml-2.5 -mt-3 shrink-0">
+                <svg viewBox="0 0 28 28" fill="none" className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 text-accent ml-2 sm:ml-2.5 -mt-2 sm:-mt-3 shrink-0">
                   <path d="M5 20 C9 14, 11 9, 15 5" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
                   <path d="M14 24 C18 16, 20 11, 24 7" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
                 </svg>
               </span>
 
               {/* it's Friday. with accent brush underline (behind the letters) */}
-              <span className="block font-serif font-black text-5xl sm:text-6xl lg:text-[76px] xl:text-[84px] mt-1 sm:mt-1.5">
+              <span className="block font-serif font-black text-[38px] xs:text-[46px] sm:text-6xl lg:text-[72px] xl:text-[82px] mt-0.5 sm:mt-1.5">
                 it&apos;s{" "}
                 <span className="relative inline-block text-primary">
                   <span className="relative z-10">Friday.</span>
@@ -119,7 +129,7 @@ export default function Hero({ onFindClick }: HeroProps) {
                   <svg
                     viewBox="0 0 240 20"
                     fill="none"
-                    className="absolute -bottom-0.5 sm:-bottom-1 left-0 w-[92%] h-3 sm:h-4 text-accent pointer-events-none z-0"
+                    className="absolute -bottom-0.5 sm:-bottom-1 left-0 w-[94%] h-2.5 sm:h-4 text-accent pointer-events-none z-0"
                   >
                     <path
                       d="M 6 14 Q 110 6, 215 12"
@@ -133,41 +143,39 @@ export default function Hero({ onFindClick }: HeroProps) {
               </span>
 
               {/* Let's make it count. */}
-              <span className="block font-sans font-black text-2xl sm:text-3xl lg:text-[36px] xl:text-[40px] mt-2.5 sm:mt-3 leading-tight tracking-tight">
+              <span className="block font-sans font-black text-xl xs:text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] mt-1.5 sm:mt-3 leading-tight tracking-tight text-dark/95">
                 Let&apos;s make it count.
               </span>
             </h1>
 
             {/* Description */}
-            <p className="mt-3.5 sm:mt-4 text-dark/75 text-sm sm:text-base lg:text-[17px] font-normal leading-relaxed max-w-[430px]">
+            <p className="mt-2.5 sm:mt-4 text-dark/75 text-sm sm:text-base lg:text-[17px] font-normal leading-relaxed max-w-[430px] text-left">
               Tell us your mood, your energy, and who you&apos;re with. We&apos;ll find
               fun ideas to make your Friday special.
             </p>
 
-            {/* Primary CTA Button & Radiant Energy Lines (Matching Screen 1 Mockup) */}
-            <div className="mt-5 sm:mt-6 flex items-center gap-3 select-none">
+            {/* Primary CTA Button & Radiant Energy Lines */}
+            <div className="mt-4 sm:mt-6 flex items-center justify-start gap-3 w-full sm:w-auto select-none">
               <motion.button
                 whileHover={{ scale: 1.03, boxShadow: "0 20px 30px -8px rgba(124, 92, 252, 0.4)" }}
                 whileTap={{ scale: 0.96 }}
                 onClick={handleCtaClick}
-                className="group inline-flex items-center gap-2.5 bg-dark text-cream text-sm sm:text-base font-semibold px-7 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 hover:bg-primary cursor-pointer"
+                className="group w-full xs:w-auto inline-flex items-center justify-center gap-2.5 bg-dark text-cream text-sm sm:text-base font-semibold px-7 sm:px-8 py-3.5 sm:py-4 rounded-full transition-all duration-300 hover:bg-primary cursor-pointer shadow-md shadow-dark/10"
               >
                 <span>Find My Friday</span>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </motion.button>
 
               {/* 3 Accent radiant burst lines \ | / */}
-              <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7 sm:w-8 sm:h-8 text-accent shrink-0">
+              <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6 sm:w-8 sm:h-8 text-accent shrink-0 hidden xs:block">
                 <line x1="6" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
                 <line x1="8" y1="8" x2="24" y2="5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
                 <line x1="8" y1="24" x2="24" y2="27" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
               </svg>
             </div>
 
-
-
             {/* Social Proof: 4 Overlapping Avatars & Trust Text */}
-            <div className="flex items-center gap-3 mt-4 sm:mt-5 select-none">
+            <div className="flex items-center justify-start gap-2.5 sm:gap-3 mt-3.5 sm:mt-5 select-none">
               <div className="flex -space-x-2 shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=70&h=70&fit=crop&crop=faces"
@@ -195,25 +203,25 @@ export default function Hero({ onFindClick }: HeroProps) {
               </span>
             </div>
 
-            {/* Bottom 3 Feature Badges in refined capsules */}
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 mt-5 sm:mt-6 pt-3 border-t border-dark/10 select-none">
+            {/* Bottom 3 Feature Badges: hidden on mobile to eliminate clutter, visible on tablet/desktop */}
+            <div className="hidden sm:flex flex-wrap items-center justify-start gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 border-t border-dark/10 select-none w-full">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/60 px-3 py-1 rounded-full border border-dark/5 shadow-xs cursor-default"
+                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/75 px-3 py-1 rounded-full border border-dark/5 shadow-2xs cursor-default"
               >
                 <span className="text-secondary">✦</span>
                 <span>Fun ideas</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/60 px-3 py-1 rounded-full border border-dark/5 shadow-xs cursor-default"
+                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/75 px-3 py-1 rounded-full border border-dark/5 shadow-2xs cursor-default"
               >
                 <span className="text-secondary">♡</span>
                 <span>No overthinking</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/60 px-3 py-1 rounded-full border border-dark/5 shadow-xs cursor-default"
+                className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/75 px-3 py-1 rounded-full border border-dark/5 shadow-2xs cursor-default"
               >
                 <span className="text-sage">☺</span>
                 <span>Happier Fridays</span>
@@ -228,7 +236,7 @@ export default function Hero({ onFindClick }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center lg:justify-start lg:-ml-4 xl:-ml-6"
+            className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center lg:justify-start lg:-ml-4 xl:-ml-6 w-full mt-2 lg:mt-0"
           >
             {/* Top-Right Doodles: Weekend Starts Now */}
             <div className="absolute -top-5 right-4 hidden xl:flex flex-col items-end select-none pointer-events-none z-20">
@@ -296,12 +304,12 @@ export default function Hero({ onFindClick }: HeroProps) {
               </motion.div>
             </div>
 
-            {/* Hero Collage Graphic with 3D Tilt */}
+            {/* Hero Collage Graphic: 3D Tilt enabled only on desktop (lg:) to prevent texture blur on sm/mobile devices */}
             <motion.div
-              style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+              style={isDesktop ? { rotateX, rotateY, transformStyle: "preserve-3d" } : undefined}
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="relative flex items-center justify-center lg:justify-start w-full max-w-[700px] lg:max-w-[760px] xl:max-w-[820px]"
+              className="relative flex items-center justify-center lg:justify-start w-full max-w-[340px] xs:max-w-[420px] sm:max-w-[520px] md:max-w-[600px] lg:max-w-[760px] xl:max-w-[820px] mx-auto lg:mx-0"
             >
               <Image
                 src="/hero-image.png"
@@ -309,7 +317,8 @@ export default function Hero({ onFindClick }: HeroProps) {
                 width={880}
                 height={920}
                 priority
-                className="w-full h-auto max-h-[min(600px,76vh)] object-contain drop-shadow-2xl select-none transition-transform duration-500 hover:scale-[1.015]"
+                unoptimized
+                className="w-full h-auto max-h-[340px] xs:max-h-[400px] sm:max-h-[480px] lg:max-h-[min(600px,76vh)] object-contain drop-shadow-2xl select-none transition-transform duration-500 hover:scale-[1.015]"
               />
             </motion.div>
           </motion.div>

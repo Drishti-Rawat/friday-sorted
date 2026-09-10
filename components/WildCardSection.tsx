@@ -62,8 +62,8 @@ export default function WildCardSection({ onRollClick, onSelectIdea }: WildCardS
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-          <div>
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-5 mb-8 text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-dark text-xs font-black uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5 text-accent" />
               <span>Wild Card Mode</span>
@@ -71,7 +71,7 @@ export default function WildCardSection({ onRollClick, onSelectIdea }: WildCardS
             <h2 className="font-serif font-black text-3xl sm:text-4xl lg:text-[44px] text-dark tracking-tight leading-tight">
               Can&apos;t decide? Let Friday pick for you. 🎲
             </h2>
-            <p className="text-dark/70 text-sm sm:text-base font-normal mt-1 max-w-xl leading-relaxed">
+            <p className="text-dark/70 text-sm sm:text-base font-normal mt-1 max-w-xl leading-relaxed mx-auto md:mx-0">
               Skip the questions, skip the group debates. Roll for an unhinged, curated Friday adventure with its own spontaneous golden rule.
             </p>
           </div>
@@ -81,7 +81,7 @@ export default function WildCardSection({ onRollClick, onSelectIdea }: WildCardS
             whileHover={{ scale: 1.03, boxShadow: "0 15px 25px -6px rgba(124, 92, 252, 0.35)" }}
             whileTap={{ scale: 0.96 }}
             onClick={handleRoll}
-            className="self-start md:self-auto inline-flex items-center gap-2.5 bg-primary text-cream font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-md hover:bg-dark transition-all duration-300 cursor-pointer shrink-0"
+            className="w-full sm:w-auto self-stretch sm:self-auto inline-flex items-center justify-center gap-2.5 bg-primary text-cream font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-md hover:bg-dark transition-all duration-300 cursor-pointer shrink-0"
           >
             <Dices className="w-5 h-5 text-accent" />
             <span>Roll a Wild Card Plan</span>

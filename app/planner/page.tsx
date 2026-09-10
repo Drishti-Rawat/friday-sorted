@@ -167,7 +167,7 @@ function PlannerContent() {
               animate="animate"
               exit="exit"
               transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="flex-1 flex flex-col overflow-hidden"
+              className="flex-1 flex flex-col overflow-y-auto"
             >
               <QuizScreen
                 key={quizKey}

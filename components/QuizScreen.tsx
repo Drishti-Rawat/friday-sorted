@@ -351,7 +351,7 @@ export default function QuizScreen({
           </div>
 
           {/* 8 Mood Cards (4x2 Grid) - Fits cleanly on screen */}
-          <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 mb-3">
+          <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 xs:gap-2.5 sm:gap-3.5 mb-3">
             {moodCards.map((card) => {
               const Icon = card.icon;
               const isSelected = selectedMood === card.id;
@@ -364,32 +364,32 @@ export default function QuizScreen({
                     soundFX.playPop();
                     setSelectedMood(card.id);
                   }}
-                  className={`relative p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl ${card.bgColor} border border-dark/6 transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none ${
+                  className={`relative p-2.5 xs:p-3 sm:p-4 rounded-2xl sm:rounded-3xl ${card.bgColor} border border-dark/6 transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none ${
                     card.borderHover
                   } ${isSelected ? card.activeBorder : ""}`}
                 >
                   {/* Selected checkmark indicator */}
                   {isSelected && (
-                    <div className="absolute top-2.5 right-2.5 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
+                    <div className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
                       <Check className="w-2.5 h-2.5 stroke-[3]" />
                     </div>
                   )}
 
                   {/* Icon */}
                   <div
-                    className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-2 transition-transform duration-300 group-hover:scale-110"
+                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-1.5 sm:mb-2 transition-transform duration-300 group-hover:scale-110"
                     style={{ backgroundColor: `${card.iconColor}18` }}
                   >
-                    <Icon className="w-5 h-5 sm:w-5.5 sm:h-5.5" style={{ color: card.iconColor }} />
+                    <Icon className="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" style={{ color: card.iconColor }} />
                   </div>
 
                   {/* Label */}
-                  <h3 className="font-sans font-bold text-sm sm:text-base text-dark tracking-tight mb-0.5">
+                  <h3 className="font-sans font-bold text-xs sm:text-base text-dark tracking-tight mb-0.5">
                     {card.label}
                   </h3>
 
                   {/* Subtitle */}
-                  <p className="text-dark/65 text-[11px] sm:text-xs font-normal leading-tight">
+                  <p className="text-dark/65 text-[10px] xs:text-[11px] sm:text-xs font-normal leading-tight line-clamp-1 xs:line-clamp-none">
                     {card.desc}
                   </p>
                 </motion.button>

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Sparkles } from "lucide-react";
 
 export default function FridayCountdownTicker() {
+  const [mounted, setMounted] = useState(false);
   const [timeLeft, setTimeLeft] = useState<{
     status: "countdown" | "is_friday" | "weekend";
     days: number;
@@ -19,6 +20,7 @@ export default function FridayCountdownTicker() {
   });
 
   useEffect(() => {
+    setMounted(true);
     const calculateTime = () => {
       const now = new Date();
       const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 5 = Fri, 6 = Sat
@@ -67,8 +69,11 @@ export default function FridayCountdownTicker() {
   }, []);
 
   return (
-    <div className="w-full bg-dark text-cream py-1.5 px-4 text-xs font-semibold select-none flex items-center justify-center overflow-hidden border-b border-white/10">
-      <div className="flex items-center gap-2">
+    <div className="w-full bg-dark text-cream py-1.5 px-4 text-xs font-semibold select-none flex items-center justify-center overflow-hidden border-b border-white/10 min-h-[30px]">
+      {!mounted ? (
+        <div className="h-4 w-40 bg-white/10 rounded-full animate-pulse" />
+      ) : (
+        <div className="flex items-center gap-2">
         {timeLeft.status === "is_friday" ? (
           <span className="flex items-center gap-1.5 text-accent font-extrabold animate-pulse">
             <span>🎉</span>
@@ -106,6 +111,7 @@ export default function FridayCountdownTicker() {
           </div>
         )}
       </div>
+      )}
     </div>
   );
 }
