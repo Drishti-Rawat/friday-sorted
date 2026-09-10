@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFF9F2;
+  --foreground: #1F1B24;
+
+  /* Semantic Theme Colors */
+  --color-primary: #7C5CFC;
+  --color-secondary: #FF6B5E;
+  --color-accent: #FFD166;
+
+  /* Custom Color Palette */
+  --color-cream: #FFF9F2;
+  --color-purple: #7C5CFC;
+  --color-coral: #FF6B5E;
+  --color-yellow: #FFD166;
+  --color-sage: #A7C557;
+  --color-dark: #1F1B24;
+}
+
+@theme {
+  --color-primary: #7C5CFC;
+  --color-secondary: #FF6B5E;
+  --color-accent: #FFD166;
+
+  --color-cream: #FFF9F2;
+  --color-purple: #7C5CFC;
+  --color-coral: #FF6B5E;
+  --color-yellow: #FFD166;
+  --color-sage: #A7C557;
+  --color-dark: #1F1B24;
+
+  /* Brand namespace aliases */
+  --color-brand-cream: #FFF9F2;
+  --color-brand-purple: #7C5CFC;
+  --color-brand-coral: #FF6B5E;
+  --color-brand-yellow: #FFD166;
+  --color-brand-sage: #A7C557;
+  --color-brand-dark: #1F1B24;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-handwriting: var(--font-handwriting);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.font-handwriting {
+  font-family: var(--font-handwriting), "Caveat", cursive;
+}
+
+.font-serif {
+  font-family: var(--font-serif), "Fraunces", Georgia, serif;
+}
+
+.font-sans {
+  font-family: var(--font-sans), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
