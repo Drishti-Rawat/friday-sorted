@@ -11,11 +11,20 @@ import IdeaCard from "@/components/IdeaCard";
 interface FridayFavoritesProps {
   onSelectIdea: (idea: FridayIdea) => void;
   onSeeAll: () => void;
+  savedIds?: string[];
+  onToggleSave?: (id: string) => void;
 }
 
-export default function FridayFavorites({ onSelectIdea, onSeeAll }: FridayFavoritesProps) {
+export default function FridayFavorites({
+  onSelectIdea,
+  onSeeAll,
+  savedIds = [],
+  onToggleSave,
+}: FridayFavoritesProps) {
   const [selectedEnergy, setSelectedEnergy] = useState<"all" | "low" | "medium" | "high">("all");
-  const [likedIds, setLikedIds] = useState<string[]>([]);
+  const [localLikedIds, setLocalLikedIds] = useState<string[]>([]);
+
+  const activeLikedIds = savedIds.length > 0 ? savedIds : localLikedIds;
 
   const filteredIdeas = (
     selectedEnergy === "all"
@@ -33,16 +42,26 @@ export default function FridayFavorites({ onSelectIdea, onSeeAll }: FridayFavori
   const toggleLike = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     soundFX.playPop();
-    setLikedIds((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
+    if (onToggleSave) {
+      onToggleSave(id);
+    } else {
+      setLocalLikedIds((prev) =>
+        prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+      );
+    }
   };
 
   return (
     <section id="favorites" className="w-full py-8 lg:py-14 scroll-mt-24">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
         {/* Section Header */}
-        <div className="flex items-end justify-between gap-4 mb-3 sm:mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-end justify-between gap-4 mb-3 sm:mb-6"
+        >
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-1.5">
               <Sparkles className="w-3 h-3" />
@@ -67,18 +86,26 @@ export default function FridayFavorites({ onSelectIdea, onSeeAll }: FridayFavori
             <span>See all ideas</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
-        </div>
+        </motion.div>
 
         {/* Interactive Energy Filter Pills - Single sleek horizontal row on mobile, wrapping on desktop */}
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none flex-nowrap sm:flex-wrap pb-1.5 sm:pb-0 mb-4 sm:mb-8 select-none">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="flex items-center gap-2 overflow-x-auto scrollbar-none flex-nowrap sm:flex-wrap pb-1.5 sm:pb-0 mb-4 sm:mb-8 select-none"
+        >
           <span className="text-xs font-bold uppercase tracking-wider text-dark/50 mr-1 hidden sm:inline shrink-0">
             Energy:
           </span>
           {energyTabs.map((tab) => {
             const isActive = selectedEnergy === tab.id;
             return (
-              <button
+              <motion.button
                 key={tab.id}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
                 onClick={() => {
                   soundFX.playPop();
                   setSelectedEnergy(tab.id);
@@ -90,10 +117,10 @@ export default function FridayFavorites({ onSelectIdea, onSeeAll }: FridayFavori
                 }`}
               >
                 {tab.label}
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* 3 Favorites Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
@@ -104,7 +131,7 @@ export default function FridayFavorites({ onSelectIdea, onSeeAll }: FridayFavori
                 idea={idea}
                 variant="standard"
                 index={index}
-                isLiked={likedIds.includes(idea.id)}
+                isLiked={activeLikedIds.includes(idea.id)}
                 onToggleLike={toggleLike}
                 onClick={() => onSelectIdea(idea)}
               />

@@ -72,9 +72,33 @@ export default function Hero({ onFindClick }: HeroProps) {
       </div>
 
       {/* 2. Soft Ambient Blobs using Tailwind theme colors */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-80 bg-primary/12 rounded-full blur-3xl pointer-events-none -z-10 -translate-x-1/3" />
-      <div className="absolute left-[42%] top-1/2 -translate-y-1/2 w-80 h-80 bg-primary/14 rounded-full blur-3xl pointer-events-none -z-10" />
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-bl from-primary/15 via-secondary/15 to-accent/20 rounded-full blur-3xl pointer-events-none -z-10" />
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          x: [-10, 15, -10],
+          y: [-15, 10, -15],
+        }}
+        transition={{ repeat: Infinity, duration: 9, ease: "easeInOut" }}
+        className="absolute left-0 top-1/2 -translate-y-1/2 w-48 h-80 bg-primary/14 rounded-full blur-3xl pointer-events-none -z-10 -translate-x-1/3"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [10, -15, 10],
+          y: [15, -10, 15],
+        }}
+        transition={{ repeat: Infinity, duration: 11, ease: "easeInOut" }}
+        className="absolute left-[42%] top-1/2 -translate-y-1/2 w-80 h-80 bg-primary/14 rounded-full blur-3xl pointer-events-none -z-10"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.1, 1],
+          x: [-15, 10, -15],
+          y: [10, -15, 10],
+        }}
+        transition={{ repeat: Infinity, duration: 13, ease: "easeInOut" }}
+        className="absolute right-8 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-bl from-primary/15 via-secondary/15 to-accent/20 rounded-full blur-3xl pointer-events-none -z-10"
+      />
 
 
 
@@ -99,8 +123,13 @@ export default function Hero({ onFindClick }: HeroProps) {
               </span>
             </div>
 
-            {/* Responsive Fluid Headline */}
-            <h1 className="tracking-tight leading-[0.98] sm:leading-[0.96] text-dark w-full text-left">
+            {/* Responsive Fluid Headline — subtle fade-up */}
+            <motion.h1
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="tracking-tight leading-[0.98] sm:leading-[0.96] text-dark w-full text-left"
+            >
               {/* Finally, with yellow double accent dashes */}
               <span className="inline-flex items-center justify-start font-serif font-black text-[38px] xs:text-[46px] sm:text-5xl md:text-5xl lg:text-[72px] xl:text-[82px]">
                 Finally,
@@ -137,13 +166,18 @@ export default function Hero({ onFindClick }: HeroProps) {
               <span className="block font-sans font-black text-xl xs:text-2xl md:text-2xl lg:text-[34px] xl:text-[38px] mt-1.5 sm:mt-3 leading-tight tracking-tight text-dark/95">
                 Let&apos;s make it count.
               </span>
-            </h1>
+            </motion.h1>
 
             {/* Description */}
-            <p className="mt-2.5 sm:mt-4 text-dark/75 text-sm md:text-sm lg:text-[17px] font-normal leading-relaxed max-w-[430px] text-left">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-2.5 sm:mt-4 text-dark/75 text-sm md:text-sm lg:text-[17px] font-normal leading-relaxed max-w-[430px] text-left"
+            >
               Tell us your mood, your energy, and who you&apos;re with. We&apos;ll find
               fun ideas to make your Friday special.
-            </p>
+            </motion.p>
 
             {/* Primary CTA Button & Radiant Energy Lines */}
             <div className="mt-4 sm:mt-6 flex items-center justify-start gap-3 w-full sm:w-auto select-none">
@@ -166,7 +200,12 @@ export default function Hero({ onFindClick }: HeroProps) {
             </div>
 
             {/* Social Proof: 4 Overlapping Avatars & Trust Text */}
-            <div className="flex items-center justify-start gap-2.5 sm:gap-3 mt-3.5 sm:mt-5 select-none">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center justify-start gap-2.5 sm:gap-3 mt-3.5 sm:mt-5 select-none"
+            >
               <div className="flex -space-x-2 shrink-0">
                 <img
                   src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=70&h=70&fit=crop&crop=faces"
@@ -192,10 +231,15 @@ export default function Hero({ onFindClick }: HeroProps) {
               <span className="text-xs sm:text-[13px] font-medium text-dark/75">
                 Join thousands making their Fridays better!
               </span>
-            </div>
+            </motion.div>
 
-            {/* Bottom 3 Feature Badges: hidden on mobile to eliminate clutter, visible on tablet/desktop */}
-            <div className="hidden sm:flex flex-wrap items-center justify-start gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 border-t border-dark/10 select-none w-full">
+            {/* Bottom 3 Feature Badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="hidden sm:flex flex-wrap items-center justify-start gap-2 sm:gap-3 mt-4 sm:mt-6 pt-3 border-t border-dark/10 select-none w-full"
+            >
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center gap-1.5 text-xs sm:text-[13px] font-medium text-dark/85 bg-white/75 px-3 py-1 rounded-full border border-dark/5 shadow-2xs cursor-default"
@@ -217,7 +261,7 @@ export default function Hero({ onFindClick }: HeroProps) {
                 <span className="text-sage">☺</span>
                 <span>Happier Fridays</span>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right Column: Hero Collage Graphic */}

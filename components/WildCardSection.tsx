@@ -62,7 +62,13 @@ export default function WildCardSection({ onRollClick, onSelectIdea }: WildCardS
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-5 mb-8 text-center md:text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row items-center md:items-end justify-between gap-5 mb-8 text-center md:text-left"
+        >
           <div className="flex flex-col items-center md:items-start">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/20 border border-accent/40 text-dark text-xs font-black uppercase tracking-wider mb-2">
               <Sparkles className="w-3.5 h-3.5 text-accent" />
@@ -81,13 +87,13 @@ export default function WildCardSection({ onRollClick, onSelectIdea }: WildCardS
             whileHover={{ scale: 1.03, boxShadow: "0 15px 25px -6px rgba(124, 92, 252, 0.35)" }}
             whileTap={{ scale: 0.96 }}
             onClick={handleRoll}
-            className="w-full sm:w-auto self-stretch sm:self-auto inline-flex items-center justify-center gap-2.5 bg-primary text-cream font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-md hover:bg-dark transition-all duration-300 cursor-pointer shrink-0"
+            className="w-full sm:w-auto self-stretch sm:self-auto inline-flex items-center justify-center gap-2.5 bg-primary text-cream font-bold text-sm sm:text-base px-6 py-3.5 rounded-full shadow-md hover:bg-dark transition-all duration-300 cursor-pointer shrink-0 group"
           >
-            <Dices className="w-5 h-5 text-accent" />
+            <Dices className="w-5 h-5 text-accent transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" />
             <span>Roll a Wild Card Plan</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </motion.button>
-        </div>
+        </motion.div>
 
         {/* 3 Wild Card Preview Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">

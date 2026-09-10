@@ -516,7 +516,13 @@ export default function ResultScreen({
                   </span>
                   <div className="space-y-1 sm:space-y-1.5">
                     {activeIdea.timeline.slice(0, 3).map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs sm:text-[12.5px]">
+                      <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: idx * 0.1, ease: "easeOut" }}
+                        className="flex items-start gap-2 text-xs sm:text-[12.5px]"
+                      >
                         <div className="w-4 h-4 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
                           <Clock className="w-2.5 h-2.5" />
                         </div>
@@ -524,7 +530,7 @@ export default function ResultScreen({
                           {item.time}
                         </span>
                         <span className="text-dark/80 leading-snug">{item.activity}</span>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>

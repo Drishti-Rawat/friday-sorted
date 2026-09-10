@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { ArrowUp, Heart, Sparkles, Dices, Compass, ArrowRight } from "lucide-react";
 import { soundFX } from "@/utils/sound";
 
@@ -46,7 +47,13 @@ export default function Footer({ onNavigateIdeas, onSavedClick, onSurpriseClick 
 
   return (
     <footer className="w-full bg-[#FAF3EC] border-t border-dark/10 pt-10 sm:pt-14 pb-10 mt-auto select-none">
-      <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12"
+      >
 
         {/* Main Grid: 1-col → 2-col (md) → 3-col (lg) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12 pb-10 sm:pb-12 border-b border-dark/10">
@@ -194,7 +201,7 @@ export default function Footer({ onNavigateIdeas, onSavedClick, onSurpriseClick 
           </button>
         </div>
 
-      </div>
+      </motion.div>
     </footer>
   );
 }

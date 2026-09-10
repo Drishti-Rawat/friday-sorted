@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Heart, Trash2, ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import React from "react";
-import { FRIDAY_IDEAS, FridayIdea } from "@/data/fridayData";
+import { FRIDAY_IDEAS, SURPRISE_IDEAS, FridayIdea } from "@/data/fridayData";
 import { soundFX } from "@/utils/sound";
 
 interface SavedIdeasDrawerProps {
@@ -24,7 +24,10 @@ export default function SavedIdeasDrawer({
   onSelectIdea,
   onFindIdeas,
 }: SavedIdeasDrawerProps) {
-  const savedIdeas = FRIDAY_IDEAS.filter((i) => savedIds.includes(i.id));
+  const ALL_IDEAS = [...FRIDAY_IDEAS, ...SURPRISE_IDEAS];
+  const savedIdeas = savedIds
+    .map((id) => ALL_IDEAS.find((i) => i.id === id))
+    .filter((i): i is FridayIdea => i !== undefined);
 
   return (
     <AnimatePresence>

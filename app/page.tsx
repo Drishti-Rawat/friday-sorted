@@ -56,6 +56,15 @@ export default function Home() {
     }
   };
 
+  const handleToggleSave = (ideaId: string) => {
+    const isSaved = savedIdeaIds.includes(ideaId);
+    const updated = isSaved
+      ? savedIdeaIds.filter((id) => id !== ideaId)
+      : [...savedIdeaIds, ideaId];
+    setSavedIdeaIds(updated);
+    saveToStorage(updated);
+  };
+
   const handleScrollToIdeas = () => {
     const el = document.getElementById("ideas");
     if (el) {
@@ -92,6 +101,8 @@ export default function Home() {
         <FridayFavorites
           onSelectIdea={(idea) => router.push(`/planner?id=${idea.id}`)}
           onSeeAll={() => router.push("/planner")}
+          savedIds={savedIdeaIds}
+          onToggleSave={handleToggleSave}
         />
 
         {/* Wild Card Spontaneous Mode Section */}

@@ -63,7 +63,13 @@ export default function NewsletterSection({ onSuccess }: NewsletterSectionProps)
   return (
     <section id="newsletter" className="w-full py-10 lg:py-16 scroll-mt-24">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
-        <div className="relative bg-[#FCEEE3] rounded-3xl p-8 sm:p-12 lg:p-14 overflow-hidden border border-[#FF6B5E]/15 shadow-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 24, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="relative bg-[#FCEEE3] rounded-3xl p-8 sm:p-12 lg:p-14 overflow-hidden border border-[#FF6B5E]/15 shadow-xs"
+        >
           
           {/* Main Grid: Left handwritten arrow, Center content, Right Sticky note */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -133,12 +139,14 @@ export default function NewsletterSection({ onSuccess }: NewsletterSectionProps)
                         className="w-full bg-white text-dark placeholder:text-dark/40 px-5 py-3.5 sm:py-4 rounded-full border border-dark/15 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm sm:text-base transition-all shadow-xs"
                       />
                     </div>
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.96 }}
                       type="submit"
                       className="w-full sm:w-auto shrink-0 bg-dark text-cream font-bold px-7 sm:px-8 py-3.5 sm:py-4 rounded-full hover:bg-primary transition-all duration-300 text-sm sm:text-base shadow-sm active:scale-95 cursor-pointer"
                     >
                       Subscribe
-                    </button>
+                    </motion.button>
                   </div>
 
                   {/* Marketing Consent Checkbox (Unchecked by default per PRD) */}
@@ -174,8 +182,12 @@ export default function NewsletterSection({ onSuccess }: NewsletterSectionProps)
             {/* Right: Angled yellow post-it note */}
             <div className="lg:col-span-3 flex justify-center lg:justify-end select-none">
               <motion.div
-                whileHover={{ rotate: 0, scale: 1.05 }}
-                className="w-40 sm:w-44 bg-accent p-5 rounded-2xl shadow-md rotate-3 flex flex-col items-center justify-center text-dark text-center border border-dark/10 cursor-default"
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 3 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2, type: "spring", stiffness: 200 }}
+                whileHover={{ rotate: 0, scale: 1.07 }}
+                className="w-40 sm:w-44 bg-accent p-5 rounded-2xl shadow-md flex flex-col items-center justify-center text-dark text-center border border-dark/10 cursor-default"
               >
                 <span className="font-extrabold text-sm sm:text-base tracking-wider uppercase leading-tight font-sans">
                   GOOD<br />DAYS<br />AHEAD
@@ -186,7 +198,7 @@ export default function NewsletterSection({ onSuccess }: NewsletterSectionProps)
 
           </div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
@@ -41,6 +41,7 @@ export default function QuizScreen({
   onBackToLanding,
 }: QuizScreenProps) {
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
+  const [direction, setDirection] = useState<number>(1);
 
   // Map initial mood if provided
   const getInitialMoodValue = () => {
@@ -239,6 +240,7 @@ export default function QuizScreen({
   const handleNext = () => {
     soundFX.playPop();
     if (step < 4) {
+      setDirection(1);
       setStep((prev) => (prev + 1) as any);
     } else {
       soundFX.playChime();
@@ -254,6 +256,7 @@ export default function QuizScreen({
   const handleBack = () => {
     soundFX.playPop();
     if (step > 1) {
+      setDirection(-1);
       setStep((prev) => (prev - 1) as any);
     } else {
       onBackToLanding();
@@ -320,257 +323,259 @@ export default function QuizScreen({
         </div>
       </div>
 
-      {/* 2. Step 1: Mood */}
-      {step === 1 && (
-        <motion.div
-          key="step1"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.25 }}
-          className="w-full max-w-4xl flex flex-col items-center flex-1 justify-center"
-        >
-          {/* Headline with Yellow 3-Ray Burst Doodle */}
-          <div className="relative text-center mb-3 sm:mb-5 shrink-0">
-            <h2 className="font-serif font-black text-2xl sm:text-3xl lg:text-[36px] text-dark tracking-tight leading-tight inline-block relative">
-              What&apos;s your Friday vibe?
-              {/* Yellow 3-ray burst doodle on top-right of headline */}
-              <svg
-                viewBox="0 0 32 32"
-                fill="none"
-                className="w-6 h-6 sm:w-7 sm:h-7 text-accent absolute -top-4 -right-7 pointer-events-none"
-              >
-                <line x1="6" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                <line x1="8" y1="8" x2="24" y2="5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                <line x1="8" y1="24" x2="24" y2="27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-              </svg>
-            </h2>
-            <p className="text-dark/65 text-xs sm:text-sm font-normal mt-0.5">
-              Pick a mood that feels right today.
-            </p>
-          </div>
-
-          {/* 8 Mood Cards (4x2 Grid) - Fits cleanly on screen */}
-          <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 xs:gap-2.5 sm:gap-3.5 mb-3">
-            {moodCards.map((card) => {
-              const Icon = card.icon;
-              const isSelected = selectedMood === card.id;
-              return (
-                <motion.button
-                  key={card.id}
-                  whileHover={{ y: -3, scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => {
-                    soundFX.playPop();
-                    setSelectedMood(card.id);
-                  }}
-                  className={`relative p-2.5 xs:p-3 sm:p-4 rounded-2xl sm:rounded-3xl ${card.bgColor} border border-dark/6 transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none ${
-                    card.borderHover
-                  } ${isSelected ? card.activeBorder : ""}`}
+      {/* 2. Steps Carousel Container */}
+      <AnimatePresence mode="wait">
+        {step === 1 && (
+          <motion.div
+            key="step1"
+            initial={{ opacity: 0, x: direction * 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -24 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="w-full max-w-4xl flex flex-col items-center flex-1 justify-center"
+          >
+            {/* Headline with Yellow 3-Ray Burst Doodle */}
+            <div className="relative text-center mb-3 sm:mb-5 shrink-0">
+              <h2 className="font-serif font-black text-2xl sm:text-3xl lg:text-[36px] text-dark tracking-tight leading-tight inline-block relative">
+                What&apos;s your Friday vibe?
+                {/* Yellow 3-ray burst doodle on top-right of headline */}
+                <svg
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-accent absolute -top-4 -right-7 pointer-events-none"
                 >
-                  {/* Selected checkmark indicator */}
-                  {isSelected && (
-                    <div className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
-                      <Check className="w-2.5 h-2.5 stroke-[3]" />
-                    </div>
-                  )}
+                  <line x1="6" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="8" y1="8" x2="24" y2="5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                  <line x1="8" y1="24" x2="24" y2="27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </h2>
+              <p className="text-dark/65 text-xs sm:text-sm font-normal mt-0.5">
+                Pick a mood that feels right today.
+              </p>
+            </div>
 
-                  {/* Icon */}
-                  <div
-                    className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-1.5 sm:mb-2 transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: `${card.iconColor}18` }}
+            {/* 8 Mood Cards (4x2 Grid) - Fits cleanly on screen */}
+            <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 xs:gap-2.5 sm:gap-3.5 mb-3">
+              {moodCards.map((card) => {
+                const Icon = card.icon;
+                const isSelected = selectedMood === card.id;
+                return (
+                  <motion.button
+                    key={card.id}
+                    whileHover={{ y: -3, scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => {
+                      soundFX.playPop();
+                      setSelectedMood(card.id);
+                    }}
+                    className={`relative p-2.5 xs:p-3 sm:p-4 rounded-2xl sm:rounded-3xl ${card.bgColor} border border-dark/6 transition-all duration-200 flex flex-col items-center text-center cursor-pointer select-none ${
+                      card.borderHover
+                    } ${isSelected ? card.activeBorder : ""}`}
                   >
-                    <Icon className="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" style={{ color: card.iconColor }} />
-                  </div>
+                    {/* Selected checkmark indicator */}
+                    {isSelected && (
+                      <div className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 w-4 h-4 rounded-full bg-primary text-white flex items-center justify-center shadow-xs">
+                        <Check className="w-2.5 h-2.5 stroke-[3]" />
+                      </div>
+                    )}
 
-                  {/* Label */}
-                  <h3 className="font-sans font-bold text-xs sm:text-base text-dark tracking-tight mb-0.5">
-                    {card.label}
-                  </h3>
-
-                  {/* Subtitle */}
-                  <p className="text-dark/65 text-[10px] xs:text-[11px] sm:text-xs font-normal leading-tight line-clamp-1 xs:line-clamp-none">
-                    {card.desc}
-                  </p>
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
-
-      {/* 3. Step 2: Energy */}
-      {step === 2 && (
-        <motion.div
-          key="step2"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.25 }}
-          className="w-full max-w-xl flex flex-col items-center flex-1 justify-center"
-        >
-          <div className="text-center mb-4 sm:mb-6">
-            <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
-              How much battery do you have left?
-            </h2>
-            <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
-              Be honest with yourself!
-            </p>
-          </div>
-
-          <div className="w-full space-y-2.5 sm:space-y-3 mb-4">
-            {energyOptions.map((opt) => {
-              const Icon = opt.icon;
-              const isSelected = selectedEnergy === opt.id;
-              return (
-                <motion.button
-                  key={opt.id}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    soundFX.playPop();
-                    setSelectedEnergy(opt.id);
-                  }}
-                  className={`w-full p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-4 text-left transition-all cursor-pointer ${
-                    isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
-                  }`}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
-                  >
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-base sm:text-lg text-dark">{opt.label}</h3>
-                    <p className="text-dark/70 text-xs sm:text-sm">{opt.desc}</p>
-                  </div>
-                  {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    {/* Icon */}
+                    <div
+                      className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-1.5 sm:mb-2 transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: `${card.iconColor}18` }}
+                    >
+                      <Icon className="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" style={{ color: card.iconColor }} />
                     </div>
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
 
-      {/* 4. Step 3: Company */}
-      {step === 3 && (
-        <motion.div
-          key="step3"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.25 }}
-          className="w-full max-w-2xl flex flex-col items-center flex-1 justify-center"
-        >
-          <div className="text-center mb-4 sm:mb-6">
-            <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
-              Who are you spending Friday with?
-            </h2>
-            <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
-              Every Friday has its company.
-            </p>
-          </div>
+                    {/* Label */}
+                    <h3 className="font-sans font-bold text-xs sm:text-base text-dark tracking-tight mb-0.5">
+                      {card.label}
+                    </h3>
 
-          <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-            {companyOptions.map((opt) => {
-              const Icon = opt.icon;
-              const isSelected = selectedCompany === opt.id;
-              return (
-                <motion.button
-                  key={opt.id}
-                  whileHover={{ y: -2, scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    soundFX.playPop();
-                    setSelectedCompany(opt.id);
-                  }}
-                  className={`p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-3.5 text-left transition-all cursor-pointer ${
-                    isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
-                  }`}
-                >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
-                    style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
+                    {/* Subtitle */}
+                    <p className="text-dark/65 text-[10px] xs:text-[11px] sm:text-xs font-normal leading-tight line-clamp-1 xs:line-clamp-none">
+                      {card.desc}
+                    </p>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* 3. Step 2: Energy */}
+        {step === 2 && (
+          <motion.div
+            key="step2"
+            initial={{ opacity: 0, x: direction * 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -24 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="w-full max-w-xl flex flex-col items-center flex-1 justify-center"
+          >
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
+                How much battery do you have left?
+              </h2>
+              <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
+                Be honest with yourself!
+              </p>
+            </div>
+
+            <div className="w-full space-y-2.5 sm:space-y-3 mb-4">
+              {energyOptions.map((opt) => {
+                const Icon = opt.icon;
+                const isSelected = selectedEnergy === opt.id;
+                return (
+                  <motion.button
+                    key={opt.id}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      soundFX.playPop();
+                      setSelectedEnergy(opt.id);
+                    }}
+                    className={`w-full p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-4 text-left transition-all cursor-pointer ${
+                      isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
+                    }`}
                   >
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-sm sm:text-base text-dark">{opt.label}</h3>
-                    <p className="text-dark/65 text-[11px] sm:text-xs mt-0.5">{opt.desc}</p>
-                  </div>
-                  {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 stroke-[3]" />
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
+                    >
+                      <Icon className="w-6 h-6" />
                     </div>
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
+                    <div className="flex-1">
+                      <h3 className="font-bold text-base sm:text-lg text-dark">{opt.label}</h3>
+                      <p className="text-dark/70 text-xs sm:text-sm">{opt.desc}</p>
+                    </div>
+                    {isSelected && (
+                      <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      </div>
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
 
-      {/* 5. Step 4: Budget */}
-      {step === 4 && (
-        <motion.div
-          key="step4"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.25 }}
-          className="w-full max-w-xl flex flex-col items-center flex-1 justify-center"
-        >
-          <div className="text-center mb-4 sm:mb-6">
-            <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
-              What&apos;s the budget vibe?
-            </h2>
-            <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
-              Splurge or stay sensible?
-            </p>
-          </div>
+        {/* 4. Step 3: Company */}
+        {step === 3 && (
+          <motion.div
+            key="step3"
+            initial={{ opacity: 0, x: direction * 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -24 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="w-full max-w-2xl flex flex-col items-center flex-1 justify-center"
+          >
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
+                Who are you spending Friday with?
+              </h2>
+              <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
+                Every Friday has its company.
+              </p>
+            </div>
 
-          <div className="w-full space-y-2.5 sm:space-y-3 mb-4">
-            {budgetOptions.map((opt) => {
-              const isSelected = selectedBudget === opt.id;
-              return (
-                <motion.button
-                  key={opt.id}
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    soundFX.playPop();
-                    setSelectedBudget(opt.id);
-                  }}
-                  className={`w-full p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-4 text-left transition-all cursor-pointer ${
-                    isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
-                  }`}
-                >
-                  <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-black text-lg"
-                    style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+              {companyOptions.map((opt) => {
+                const Icon = opt.icon;
+                const isSelected = selectedCompany === opt.id;
+                return (
+                  <motion.button
+                    key={opt.id}
+                    whileHover={{ y: -2, scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      soundFX.playPop();
+                      setSelectedCompany(opt.id);
+                    }}
+                    className={`p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-3.5 text-left transition-all cursor-pointer ${
+                      isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
+                    }`}
                   >
-                    {opt.badge}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-base sm:text-lg text-dark">{opt.label}</h3>
-                    <p className="text-dark/70 text-xs sm:text-sm">{opt.desc}</p>
-                  </div>
-                  {isSelected && (
-                    <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
-                      <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
+                    >
+                      <Icon className="w-5 h-5" />
                     </div>
-                  )}
-                </motion.button>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
+                    <div className="flex-1">
+                      <h3 className="font-bold text-sm sm:text-base text-dark">{opt.label}</h3>
+                      <p className="text-dark/65 text-[11px] sm:text-xs mt-0.5">{opt.desc}</p>
+                    </div>
+                    {isSelected && (
+                      <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+                        <Check className="w-3 h-3 stroke-[3]" />
+                      </div>
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+
+        {/* 5. Step 4: Budget */}
+        {step === 4 && (
+          <motion.div
+            key="step4"
+            initial={{ opacity: 0, x: direction * 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: direction * -24 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="w-full max-w-xl flex flex-col items-center flex-1 justify-center"
+          >
+            <div className="text-center mb-4 sm:mb-6">
+              <h2 className="font-serif font-black text-2xl sm:text-3xl text-dark tracking-tight">
+                What&apos;s the budget vibe?
+              </h2>
+              <p className="text-dark/65 text-xs sm:text-sm font-normal mt-1">
+                Splurge or stay sensible?
+              </p>
+            </div>
+
+            <div className="w-full space-y-2.5 sm:space-y-3 mb-4">
+              {budgetOptions.map((opt) => {
+                const isSelected = selectedBudget === opt.id;
+                return (
+                  <motion.button
+                    key={opt.id}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      soundFX.playPop();
+                      setSelectedBudget(opt.id);
+                    }}
+                    className={`w-full p-4 sm:p-5 rounded-2xl ${opt.bgColor} border border-dark/8 flex items-center gap-4 text-left transition-all cursor-pointer ${
+                      isSelected ? "ring-2 ring-primary border-primary shadow-md" : "hover:border-dark/20"
+                    }`}
+                  >
+                    <div
+                      className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-black text-lg"
+                      style={{ backgroundColor: `${opt.color}20`, color: opt.color }}
+                    >
+                      {opt.badge}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-bold text-base sm:text-lg text-dark">{opt.label}</h3>
+                      <p className="text-dark/70 text-xs sm:text-sm">{opt.desc}</p>
+                    </div>
+                    {isSelected && (
+                      <div className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      </div>
+                    )}
+                  </motion.button>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom Navigation Bar (Screen 2 Mockup) - Always visible above fold */}
       <div className="w-full max-w-lg flex items-center justify-between pt-3 sm:pt-4 border-t border-dark/10 select-none shrink-0 mt-auto">

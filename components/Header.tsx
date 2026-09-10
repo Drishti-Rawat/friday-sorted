@@ -128,7 +128,14 @@ export default function Header({
             title="View saved Friday plans"
           >
             <Heart className="w-3.5 h-3.5" fill={savedCount > 0 ? "currentColor" : "none"} />
-            <span>Saved {savedCount > 0 ? `(${savedCount})` : ""}</span>
+            <motion.span
+              key={savedCount}
+              initial={{ scale: 1.35 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+            >
+              Saved {savedCount > 0 ? `(${savedCount})` : ""}
+            </motion.span>
           </motion.button>
 
           {/* Find My Friday CTA */}
