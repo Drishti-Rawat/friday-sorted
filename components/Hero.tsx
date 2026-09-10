@@ -89,14 +89,14 @@ export default function Hero({ onFindClick }: HeroProps) {
 
       {/* 4. Main Content Container */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 lg:gap-6 items-center">
           
           {/* Left Column: Typography, Badges & CTA */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 xl:col-span-5 flex flex-col items-start text-left z-10 w-full"
+            className="md:col-span-6 lg:col-span-5 flex flex-col items-start text-left z-10 w-full"
           >
             {/* Wavy squiggle & GOOD VIBES ONLY */}
             <div className="flex flex-col items-start mb-1.5 sm:mb-2">
@@ -111,7 +111,7 @@ export default function Hero({ onFindClick }: HeroProps) {
             {/* Responsive Fluid Headline */}
             <h1 className="tracking-tight leading-[0.98] sm:leading-[0.96] text-dark w-full text-left">
               {/* Finally, with yellow double accent dashes */}
-              <span className="inline-flex items-center justify-start font-serif font-black text-[38px] xs:text-[46px] sm:text-6xl lg:text-[72px] xl:text-[82px]">
+              <span className="inline-flex items-center justify-start font-serif font-black text-[38px] xs:text-[46px] sm:text-5xl md:text-5xl lg:text-[72px] xl:text-[82px]">
                 Finally,
                 {/* Accent dashes */}
                 <svg viewBox="0 0 28 28" fill="none" className="w-5 h-5 xs:w-6 xs:h-6 sm:w-8 sm:h-8 text-accent ml-2 sm:ml-2.5 -mt-2 sm:-mt-3 shrink-0">
@@ -121,7 +121,7 @@ export default function Hero({ onFindClick }: HeroProps) {
               </span>
 
               {/* it's Friday. with accent brush underline (behind the letters) */}
-              <span className="block font-serif font-black text-[38px] xs:text-[46px] sm:text-6xl lg:text-[72px] xl:text-[82px] mt-0.5 sm:mt-1.5">
+              <span className="block font-serif font-black text-[38px] xs:text-[46px] sm:text-5xl md:text-5xl lg:text-[72px] xl:text-[82px] mt-0.5 sm:mt-1.5">
                 it&apos;s{" "}
                 <span className="relative inline-block text-primary">
                   <span className="relative z-10">Friday.</span>
@@ -143,13 +143,13 @@ export default function Hero({ onFindClick }: HeroProps) {
               </span>
 
               {/* Let's make it count. */}
-              <span className="block font-sans font-black text-xl xs:text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] mt-1.5 sm:mt-3 leading-tight tracking-tight text-dark/95">
+              <span className="block font-sans font-black text-xl xs:text-2xl md:text-2xl lg:text-[34px] xl:text-[38px] mt-1.5 sm:mt-3 leading-tight tracking-tight text-dark/95">
                 Let&apos;s make it count.
               </span>
             </h1>
 
             {/* Description */}
-            <p className="mt-2.5 sm:mt-4 text-dark/75 text-sm sm:text-base lg:text-[17px] font-normal leading-relaxed max-w-[430px] text-left">
+            <p className="mt-2.5 sm:mt-4 text-dark/75 text-sm md:text-sm lg:text-[17px] font-normal leading-relaxed max-w-[430px] text-left">
               Tell us your mood, your energy, and who you&apos;re with. We&apos;ll find
               fun ideas to make your Friday special.
             </p>
@@ -229,14 +229,14 @@ export default function Hero({ onFindClick }: HeroProps) {
             </div>
           </motion.div>
 
-          {/* Right Column: Hero Collage Graphic pulled closer to center to eliminate middle void */}
+          {/* Right Column: Hero Collage Graphic */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="lg:col-span-7 xl:col-span-7 relative flex items-center justify-center lg:justify-start lg:-ml-4 xl:-ml-6 w-full mt-2 lg:mt-0"
+            className="md:col-span-6 lg:col-span-7 relative flex items-center justify-center md:justify-end lg:justify-start md:-ml-0 lg:-ml-4 xl:-ml-6 w-full mt-4 md:mt-0"
           >
             {/* Top-Right Doodles: Weekend Starts Now */}
             <div className="absolute -top-5 right-4 hidden xl:flex flex-col items-end select-none pointer-events-none z-20">
@@ -309,7 +309,7 @@ export default function Hero({ onFindClick }: HeroProps) {
               style={isDesktop ? { rotateX, rotateY, transformStyle: "preserve-3d" } : undefined}
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="relative flex items-center justify-center lg:justify-start w-full max-w-[340px] xs:max-w-[420px] sm:max-w-[520px] md:max-w-[600px] lg:max-w-[760px] xl:max-w-[820px] mx-auto lg:mx-0"
+              className="relative flex items-center justify-center md:justify-end lg:justify-start w-full max-w-[340px] xs:max-w-[420px] sm:max-w-[520px] md:max-w-[480px] lg:max-w-[760px] xl:max-w-[820px] mx-auto lg:mx-0"
             >
               <Image
                 src="/hero-image.png"
@@ -318,7 +318,7 @@ export default function Hero({ onFindClick }: HeroProps) {
                 height={920}
                 priority
                 unoptimized
-                className="w-full h-auto max-h-[340px] xs:max-h-[400px] sm:max-h-[480px] lg:max-h-[min(600px,76vh)] object-contain drop-shadow-2xl select-none transition-transform duration-500 hover:scale-[1.015]"
+                className="w-full h-auto max-h-[320px] xs:max-h-[380px] md:max-h-[440px] lg:max-h-[min(600px,76vh)] object-contain drop-shadow-2xl select-none transition-transform duration-500 hover:scale-[1.015]"
               />
             </motion.div>
           </motion.div>

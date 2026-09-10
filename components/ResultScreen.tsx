@@ -348,10 +348,10 @@ export default function ResultScreen({
             />
           )}
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-stretch flex-1">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6 lg:gap-8 items-stretch flex-1">
             
             {/* Left Column: Proportional Image Container */}
-            <div className="lg:col-span-5 relative w-full h-48 xs:h-56 sm:h-64 lg:h-full min-h-[220px] sm:min-h-[260px] max-h-[440px] rounded-2xl overflow-hidden bg-cream shadow-xs">
+            <div className="md:col-span-5 relative w-full h-48 xs:h-56 sm:h-64 md:h-full min-h-[220px] sm:min-h-[260px] max-h-[440px] rounded-2xl overflow-hidden bg-cream shadow-xs">
               <Image
                 src={activeIdea.image}
                 alt={activeIdea.title}
@@ -426,7 +426,7 @@ export default function ResultScreen({
             </div>
 
             {/* Right Column: Details, Spontaneous Rule, Schedule & Actions */}
-            <div className="lg:col-span-7 flex flex-col justify-between h-full py-0.5">
+            <div className="md:col-span-7 flex flex-col justify-between h-full py-0.5">
               <div>
                 {/* Category / Spontaneity Pill */}
                 <div className="mb-2">

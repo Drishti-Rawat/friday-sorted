@@ -320,6 +320,505 @@ export const FRIDAY_IDEAS: FridayIdea[] = [
       { time: "7:30 PM", activity: "Paint pastel glazes with herbal tea in hand" },
     ],
   },
+
+  // 13. Karaoke & Korean Fried Chicken (Party / High Energy / Friends / Budget)
+  {
+    id: "karaoke-korean-chicken",
+    title: "Neon Karaoke & Crispy Fried Chicken",
+    favoriteTitle: "Karaoke & Hot Chicken",
+    category: "chaos",
+    mood: "Party",
+    energy: "high",
+    company: "friends",
+    budget: "budget",
+    duration: "3.5 hours",
+    description:
+      "Private singing booth, tambourines, double-fried spicy soy garlic chicken wings, and screaming 2000s pop anthems.",
+    image:
+      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.8k",
+    tags: ["High Energy", "Karaoke", "Foodie", "Singalong"],
+    timeline: [
+      { time: "7:30 PM", activity: "Meet at the Korean fried chicken joint for loaded platters" },
+      { time: "8:45 PM", activity: "Claim private neon-lit karaoke room" },
+      { time: "9:15 PM", activity: "Duet showdowns & air guitar solos" },
+      { time: "11:00 PM", activity: "Iced boba milk tea debrief walk" },
+    ],
+  },
+
+  // 14. Secret Speakeasy & Salsa (Party / High Energy / Partner / Splurge)
+  {
+    id: "speakeasy-salsa",
+    title: "Secret Speakeasy & Salsa Nights",
+    favoriteTitle: "Speakeasy & Salsa",
+    category: "main-character",
+    mood: "Party",
+    energy: "high",
+    company: "partner",
+    budget: "splurge",
+    duration: "4 hours",
+    description:
+      "Knock on the unmarked bookcase door, sip mezcal cocktails with smoked rosemary, and join the spontaneous Latin dancefloor.",
+    image:
+      "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.7k",
+    tags: ["Nightlife", "Romantic", "Dance", "Splurge"],
+    timeline: [
+      { time: "8:30 PM", activity: "Password entry through hidden bookcase doorway" },
+      { time: "9:00 PM", activity: "Smoked cocktail tasting at candlelit booth" },
+      { time: "10:15 PM", activity: "Hit the lively salsa dance floor" },
+      { time: "12:00 AM", activity: "Midnight churros and city night views" },
+    ],
+  },
+
+  // 15. Neon Roller Skating Disco (Cheap & Fun / High Energy / Friends / Budget)
+  {
+    id: "roller-skating-disco",
+    title: "Neon Roller Disco & Slushies",
+    favoriteTitle: "Neon Roller Disco",
+    category: "chaos",
+    mood: "Cheap & Fun",
+    energy: "high",
+    company: "friends",
+    budget: "budget",
+    duration: "2.5 hours",
+    description:
+      "Lace up four-wheel retro skates, dodge your wobbly friends under mirror balls, and spin to funky 70s disco beats.",
+    image:
+      "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.5k",
+    tags: ["Active", "Retro", "Cheap & Fun", "Laughter"],
+    timeline: [
+      { time: "7:00 PM", activity: "Rent light-up four-wheel roller skates" },
+      { time: "7:30 PM", activity: "Mirror ball disco laps & hand-holding train" },
+      { time: "8:45 PM", activity: "Blue raspberry slushies & cheesy pretzel bites" },
+      { time: "9:30 PM", activity: "Limbo contest on the main rink floor" },
+    ],
+  },
+
+  // 16. $10 Grocery Cook-Off Challenge (Cheap & Fun / Medium Energy / Partner / Budget)
+  {
+    id: "budget-grocery-cookoff",
+    title: "The $10 Mystery Cook-Off",
+    favoriteTitle: "$10 Cook-Off Duel",
+    category: "chaos",
+    mood: "Cheap & Fun",
+    energy: "medium",
+    company: "partner",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Each person gets exactly $10 and 15 minutes in the supermarket. Head home and battle for the best gourmet dish.",
+    image:
+      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.9k",
+    tags: ["Cheap & Fun", "Playful", "Cooking", "Date Duel"],
+    timeline: [
+      { time: "6:30 PM", activity: "Meet at the market: 15-minute $10 shopping timer" },
+      { time: "7:15 PM", activity: "Kitchen apron on: 45-minute cooking clash" },
+      { time: "8:00 PM", activity: "Blindfolded plating & taste test judging" },
+      { time: "8:45 PM", activity: "Winner picks dessert and movie playlist" },
+    ],
+  },
+
+  // 17. Night Market Street Food Safari (With Friends / Medium Energy / Friends / Budget)
+  {
+    id: "night-market-safari",
+    title: "Night Market Street Food Safari",
+    favoriteTitle: "Night Market Safari",
+    category: "chaos",
+    mood: "With Friends",
+    energy: "medium",
+    company: "friends",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Follow the scent of charcoal grills and sweet crepes through buzzing neon street stalls with your best crew.",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.4k",
+    tags: ["Street Food", "Social", "Bustling", "Outdoor Market"],
+    timeline: [
+      { time: "7:00 PM", activity: "Assemble at the lantern-lit market gate" },
+      { time: "7:30 PM", activity: "Round 1: Steaming dumplings & spicy skewers" },
+      { time: "8:30 PM", activity: "Round 2: Fresh sugarcane juice & bubble waffles" },
+      { time: "9:30 PM", activity: "Browse artisan trinket stalls & vinyl prints" },
+    ],
+  },
+
+  // 18. Living Room Board Game Showdown (Cozy / Low Energy / Friends / Free)
+  {
+    id: "board-game-showdown",
+    title: "Living Room Board Game Showdown",
+    favoriteTitle: "Board Game Showdown",
+    category: "couch",
+    mood: "Cozy",
+    energy: "low",
+    company: "friends",
+    budget: "free",
+    duration: "4 hours",
+    description:
+      "Break out Catan, Codenames, or Uno. Blankets on the rug, hot chocolate mugs, and friendly banter all night long.",
+    image:
+      "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.9k",
+    tags: ["Cozy", "Games", "Friends", "No Cost"],
+    timeline: [
+      { time: "6:30 PM", activity: "Gather blankets & brew spiced apple cider" },
+      { time: "7:00 PM", activity: "Round 1: Fast-paced social deduction games" },
+      { time: "8:30 PM", activity: "Snack pause with warm cookies & dip" },
+      { time: "9:00 PM", activity: "Championship strategy showdown" },
+    ],
+  },
+
+  // 19. Fondue & French Vinyl Night (Cozy / Low Energy / Partner / Budget)
+  {
+    id: "fondue-french-vinyl",
+    title: "Melted Fondue & French Vinyl",
+    favoriteTitle: "Fondue & Vinyl Night",
+    category: "soft",
+    mood: "Cozy",
+    energy: "low",
+    company: "partner",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Bubbling Gruyère cheese fondue pot, crusty sourdough cubes, green apples, and warm vintage French jazz on repeat.",
+    image:
+      "https://images.unsplash.com/photo-1544025162-d76694265947?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.1k",
+    tags: ["Cozy", "Romantic", "Comfort Food", "Vinyl"],
+    timeline: [
+      { time: "6:30 PM", activity: "Cut sourdough baguettes & crisp Granny Smith apples" },
+      { time: "7:15 PM", activity: "Melt Swiss cheese with garlic and white wine" },
+      { time: "8:00 PM", activity: "Dipping feast with ambient candlelight and jazz" },
+      { time: "9:15 PM", activity: "Dark chocolate strawberries dessert round" },
+    ],
+  },
+
+  // 20. Solo Bookstore Wandering & Gelato (Chill / Low Energy / Solo / Budget)
+  {
+    id: "bookstore-gelato-solo",
+    title: "Aesthetic Bookstore & Artisan Gelato",
+    favoriteTitle: "Bookstore & Gelato",
+    category: "reset",
+    mood: "Chill",
+    energy: "low",
+    company: "solo",
+    budget: "budget",
+    duration: "2.5 hours",
+    description:
+      "Get wonderfully lost in tall mahogany bookshelves, pick a novel purely by its cover, and enjoy two scoops of pistachio gelato.",
+    image:
+      "https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.8k",
+    tags: ["Solo Date", "Peaceful", "Books", "Gelato"],
+    timeline: [
+      { time: "5:30 PM", activity: "Walk through quiet indie bookstore aisles" },
+      { time: "6:30 PM", activity: "Choose one book without reading any reviews" },
+      { time: "7:15 PM", activity: "Grab two scoops of pistachio & dark chocolate gelato" },
+      { time: "7:45 PM", activity: "Read the first three chapters on a park bench" },
+    ],
+  },
+
+  // 21. At-Home Luxury Spa & Sound Bath (Chill / Low Energy / Solo / Free)
+  {
+    id: "home-spa-soundbath",
+    title: "At-Home Sanctuary Spa & Sound Bath",
+    favoriteTitle: "At-Home Spa Reset",
+    category: "reset",
+    mood: "Chill",
+    energy: "low",
+    company: "solo",
+    budget: "free",
+    duration: "2 hours",
+    description:
+      "Steamy eucalyptus bath, clay face mask, dimmed bathroom candles, and an immersive 432Hz ambient sound bath meditation.",
+    image:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.2k",
+    tags: ["Wellness", "Recharge", "Self-Care", "Free"],
+    timeline: [
+      { time: "7:00 PM", activity: "Eucalyptus essential oils in a hot steaming soak" },
+      { time: "7:30 PM", activity: "Cool hydrating face mask & crystal eye stones" },
+      { time: "8:15 PM", activity: "Noise-cancelling headphones sound bath session" },
+      { time: "9:00 PM", activity: "Sleep tea in fresh clean cotton pajamas" },
+    ],
+  },
+
+  // 22. Bookstore Date & Dessert Parlor (Date Night / Low Energy / Partner / Budget)
+  {
+    id: "bookstore-dessert-date",
+    title: "Secret Bookstore Date & Warm Churros",
+    favoriteTitle: "Bookstore & Dessert Date",
+    category: "soft",
+    mood: "Date Night",
+    energy: "low",
+    company: "partner",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Pick books for each other that describe your connection, then head to a cozy corner dessert parlor for hot churros and chocolate.",
+    image:
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.6k",
+    tags: ["Romantic", "Sweet", "Conversations", "Indie"],
+    timeline: [
+      { time: "6:30 PM", activity: "Bookstore challenge: find a book for each other" },
+      { time: "7:30 PM", activity: "Reveal picks with coffee in reading nooks" },
+      { time: "8:15 PM", activity: "Late-night dessert parlor for cinnamon churros" },
+      { time: "9:15 PM", activity: "Quiet stroll home under golden streetlamps" },
+    ],
+  },
+
+  // 23. Retro Drive-In Cinema Double Feature (Date Night / Low Energy / Partner / Budget)
+  {
+    id: "drive-in-cinema",
+    title: "Retro Drive-In Cinema & Milkshakes",
+    favoriteTitle: "Drive-In Movie Night",
+    category: "soft",
+    mood: "Date Night",
+    energy: "low",
+    company: "partner",
+    budget: "budget",
+    duration: "3.5 hours",
+    description:
+      "Back the car in, fold down the backseats with duvet blankets and pillows, tune your FM radio to the big screen, and sip thick strawberry milkshakes.",
+    image:
+      "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.0k",
+    tags: ["Retro", "Romantic", "Drive-In", "Movie"],
+    timeline: [
+      { time: "7:00 PM", activity: "Arrive early and pick prime center screen spot" },
+      { time: "7:30 PM", activity: "Set up bed pillows & order retro diner milkshakes" },
+      { time: "8:15 PM", activity: "First feature film under the open twilight sky" },
+      { time: "10:15 PM", activity: "Intermission fresh buttered popcorn refill" },
+    ],
+  },
+
+  // 24. Moonlit Beach Bonfire & Acoustic Jam (Outdoors / Medium Energy / Partner / Free)
+  {
+    id: "beach-bonfire-acoustic",
+    title: "Moonlit Beach Bonfire & Acoustic Jam",
+    favoriteTitle: "Beach Bonfire Jam",
+    category: "soft",
+    mood: "Outdoors",
+    energy: "medium",
+    company: "partner",
+    budget: "free",
+    duration: "3 hours",
+    description:
+      "Tuck warm blankets into the sand, light driftwood in a designated fire ring, listen to waves crash, and hum along to gentle acoustic guitar.",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.3k",
+    tags: ["Outdoors", "Acoustic", "Ocean Breeze", "Free"],
+    timeline: [
+      { time: "6:30 PM", activity: "Scout coastal fire ring as the sunset fades" },
+      { time: "7:15 PM", activity: "Kindle the bonfire and unwrap thermos hot cider" },
+      { time: "8:00 PM", activity: "Acoustic chords with ocean waves crashing rhythm" },
+      { time: "9:15 PM", activity: "Stargazing barefoot in the cool evening sand" },
+    ],
+  },
+
+  // 25. Twilight Glow Kayaking Adventure (Outdoors / Medium Energy / Friends / Splurge)
+  {
+    id: "twilight-glow-kayaking",
+    title: "Twilight Illuminated Kayak Tour",
+    favoriteTitle: "Twilight Glow Kayaking",
+    category: "reset",
+    mood: "Outdoors",
+    energy: "medium",
+    company: "friends",
+    budget: "splurge",
+    duration: "2.5 hours",
+    description:
+      "Glass-bottom kayaks illuminated with neon underwater LED lights, gliding silently over calm nighttime harbor waters.",
+    image:
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.7k",
+    tags: ["Adventure", "Glow Lights", "Water", "Outdoors"],
+    timeline: [
+      { time: "6:45 PM", activity: "Gear fitting & safety debrief at the marina dock" },
+      { time: "7:15 PM", activity: "Launch illuminated LED kayaks into calm water" },
+      { time: "8:15 PM", activity: "Float under historic city bridges reflecting colored light" },
+      { time: "9:00 PM", activity: "Dockside warm clam chowder or hot chocolate" },
+    ],
+  },
+
+  // 26. Co-Working Pizza Jam & Passion Projects (Productive / Medium Energy / Friends / Budget)
+  {
+    id: "coworking-pizza-jam",
+    title: "Co-Working Pizza Jam & Passion Projects",
+    favoriteTitle: "Co-Working Pizza Jam",
+    category: "reset",
+    mood: "Productive",
+    energy: "medium",
+    company: "friends",
+    budget: "budget",
+    duration: "3.5 hours",
+    description:
+      "Laptops around a wooden table, lo-fi beats bumping through the speakers, hot pizza delivered, and finally finishing that creative side project.",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.6k",
+    tags: ["Productive", "Side Hustle", "Pizza", "Accountability"],
+    timeline: [
+      { time: "6:30 PM", activity: "Order two giant gourmet specialty pizzas" },
+      { time: "7:00 PM", activity: "Lightning pitch: what each person is building tonight" },
+      { time: "7:15 PM", activity: "2-hour deep focus work sprint with lo-fi beats" },
+      { time: "9:30 PM", activity: "Show & tell demo time with celebratory slices" },
+    ],
+  },
+
+  // 27. Apartment Sanctuary & Plant Care Reset (Productive / Low Energy / Solo / Free)
+  {
+    id: "apartment-plant-reset",
+    title: "Apartment Sanctuary & Plant Care Reset",
+    favoriteTitle: "Plant Care & Room Reset",
+    category: "reset",
+    mood: "Productive",
+    energy: "low",
+    company: "solo",
+    budget: "free",
+    duration: "2 hours",
+    description:
+      "Mist and prune your house plants, swap bedsheets for crisp eucalyptus linen, declutter your desk, and light a calming cedar candle.",
+    image:
+      "https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.4k",
+    tags: ["Organize", "Mindful", "Home Reset", "Fresh Start"],
+    timeline: [
+      { time: "6:00 PM", activity: "Put on calm bossa nova and wipe down surfaces" },
+      { time: "6:45 PM", activity: "Water, prune, and rotate all windowsill plants" },
+      { time: "7:30 PM", activity: "Make bed with freshly laundered crisp sheets" },
+      { time: "8:00 PM", activity: "Light a pine candle and enjoy your pristine sanctuary" },
+    ],
+  },
+
+  // 28. DIY Artisan Pizza & Family Trivia (Cozy / Low Energy / Family / Budget)
+  {
+    id: "family-pizza-trivia",
+    title: "DIY Artisan Pizza & Family Trivia",
+    favoriteTitle: "DIY Pizza & Family Trivia",
+    category: "couch",
+    mood: "Cozy",
+    energy: "low",
+    company: "family",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Roll out personal pizza dough rounds with all the toppings imaginable, then crown the undisputed household trivia master.",
+    image:
+      "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.4k",
+    tags: ["Family", "Hands-On", "Pizza", "Trivia"],
+    timeline: [
+      { time: "6:00 PM", activity: "Set out topping bowls: pesto, burrata, peppers, herbs" },
+      { time: "6:30 PM", activity: "Everyone shapes and tops their custom crust" },
+      { time: "7:15 PM", activity: "Crispy wood-oven bake and taste comparisons" },
+      { time: "8:00 PM", activity: "Family pop-culture and history trivia duel" },
+    ],
+  },
+
+  // 29. Botanical Garden Stroll & Gelato (Chill / Low Energy / Family / Free)
+  {
+    id: "botanical-garden-stroll",
+    title: "Twilight Botanical Garden Stroll",
+    favoriteTitle: "Botanical Garden Stroll",
+    category: "soft",
+    mood: "Chill",
+    energy: "low",
+    company: "family",
+    budget: "free",
+    duration: "2 hours",
+    description:
+      "Walk the shaded trails of the conservatory, spot exotic blooming orchids in the glass greenhouse, and breathe in fresh pine air.",
+    image:
+      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "1.9k",
+    tags: ["Nature", "Peaceful", "Family Walk", "Scenic"],
+    timeline: [
+      { time: "5:30 PM", activity: "Enter botanical garden grounds during golden hour" },
+      { time: "6:15 PM", activity: "Wander through the tropical humidity conservatory" },
+      { time: "7:00 PM", activity: "Relax by the koi pond under weeping willows" },
+    ],
+  },
+
+  // 30. Thrift Store Met Gala Challenge (Cheap & Fun / Medium Energy / Friends / Budget)
+  {
+    id: "thrift-met-gala",
+    title: "The $15 Thrift Store Met Gala",
+    favoriteTitle: "Thrift Store Met Gala",
+    category: "chaos",
+    mood: "Cheap & Fun",
+    energy: "medium",
+    company: "friends",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Each friend gets $15 and 20 minutes to assemble the most absurd, avant-garde haute couture outfit from thrift racks. Red carpet photoshoot included.",
+    image:
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.1k",
+    tags: ["Hilarious", "Fashion", "Photoshoot", "Budget Fun"],
+    timeline: [
+      { time: "6:30 PM", activity: "Meet at a mega thrift store with a $15 budget" },
+      { time: "7:15 PM", activity: "Fitting room runway reveals & dramatic critiques" },
+      { time: "8:00 PM", activity: "Walk the 'red carpet' outside for hilarious photos" },
+      { time: "9:00 PM", activity: "Grab diner fries while rocking the winning outfit" },
+    ],
+  },
+
+  // 31. Late Night Comedy Cellar & Craft Beer (Party / Medium Energy / Friends / Budget)
+  {
+    id: "comedy-cellar-craft-beer",
+    title: "Underground Comedy Cellar & Craft Pints",
+    favoriteTitle: "Comedy Cellar & Beer",
+    category: "main-character",
+    mood: "Party",
+    energy: "medium",
+    company: "friends",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Descend into a dimly lit brick cellar, catch surprise drop-in standup comedy sets, and laugh till your stomach aches over cold hazy IPAs.",
+    image:
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.8k",
+    tags: ["Standup", "Laughter", "Nightlife", "Friends"],
+    timeline: [
+      { time: "7:30 PM", activity: "Pre-show pints and salty bar snacks at local pub" },
+      { time: "8:15 PM", activity: "Take front-middle seats in the basement comedy room" },
+      { time: "8:30 PM", activity: "90 minutes of non-stop touring standup sets" },
+      { time: "10:15 PM", activity: "Quoting the best punchlines on the walk home" },
+    ],
+  },
+
+  // 32. Chef's Tasting Menu & Skybar Splurge (Date Night / High Energy / Partner / Splurge)
+  {
+    id: "chefs-tasting-skybar",
+    title: "Chef's Tasting Menu & Skyline High",
+    favoriteTitle: "Chef's Tasting & Skybar",
+    category: "main-character",
+    mood: "Date Night",
+    energy: "high",
+    company: "partner",
+    budget: "splurge",
+    duration: "4 hours",
+    description:
+      "A 6-course seasonal culinary tasting menu with bespoke wine pairings, followed by champagne on the 40th-floor rooftop overlooking the twinkling metropolis.",
+    image:
+      "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "4.2k",
+    tags: ["Splurge", "Fine Dining", "Luxury", "Unforgettable"],
+    timeline: [
+      { time: "7:30 PM", activity: "Arrive dressed to the nines at chef's table" },
+      { time: "8:00 PM", activity: "6-course culinary journey with sommelier pairings" },
+      { time: "10:00 PM", activity: "High-speed elevator up to the 40th floor skybar" },
+      { time: "10:30 PM", activity: "Champagne toast under the open starlit sky" },
+    ],
+  },
 ];
 
 // Weighted matching algorithm that picks the true best matching idea based on all 4 user answers
@@ -533,6 +1032,107 @@ export const SURPRISE_IDEAS: FridayIdea[] = [
       { time: "8:00 PM", activity: "Lace up retro bowling shoes & order nachos" },
       { time: "8:30 PM", activity: "Cosmic blacklight lanes with retro 80s jams" },
       { time: "10:00 PM", activity: "Trophy ceremony for the most ridiculous strike" },
+    ],
+  },
+  {
+    id: "dice-roll-dinner-crawl",
+    title: "The 6-Sided Dice Dinner Crawl",
+    favoriteTitle: "Dice-Roll Dinner Crawl",
+    category: "chaos",
+    mood: "With Friends",
+    energy: "high",
+    company: "friends",
+    budget: "budget",
+    duration: "3.5 hours",
+    description:
+      "Carry a single pair of dice into a restaurant district. Roll to pick: 1-2 appetizer spot, 3-4 entree haven, 5-6 dessert parlour. Let fate decide your feast.",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.9k",
+    matchScore: 100,
+    isSurprise: true,
+    surpriseRule: "Rule: Roll a d6 at every street corner: odd numbers turn left, evens go right.",
+    tags: ["🎲 Dice Roll Feasts", "Fate-Driven", "Foodie Tour", "Wild Card"],
+    timeline: [
+      { time: "7:00 PM", activity: "Roll first dice for appetizer venue" },
+      { time: "7:45 PM", activity: "Roll again for main course location" },
+      { time: "8:45 PM", activity: "Final roll for wild late-night dessert" },
+      { time: "9:45 PM", activity: "Crown the luckiest roller of the squad" },
+    ],
+  },
+  {
+    id: "blindfold-dessert-tournament",
+    title: "Blindfolded Dessert Taste-Test Tournament",
+    favoriteTitle: "Blindfolded Dessert Duel",
+    category: "chaos",
+    mood: "Cheap & Fun",
+    energy: "medium",
+    company: "friends",
+    budget: "budget",
+    duration: "2.5 hours",
+    description:
+      "Buy 5 mystery pastries or ice cream pints. Put on silk blindfolds, hand out spoons, and score each blind entry with outrageous sommelier-style critiques.",
+    image:
+      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "3.2k",
+    matchScore: 100,
+    isSurprise: true,
+    surpriseRule: "Rule: No peeking! Elaborate French food-critic accents are mandatory during tasting.",
+    tags: ["🍰 Blind Taste Test", "Sweet Tooth", "Party Game", "Wild Card"],
+    timeline: [
+      { time: "7:30 PM", activity: "Secret pastry run: 5 mystery treats" },
+      { time: "8:15 PM", activity: "Silk blindfolds on: Round 1 texture & flavor test" },
+      { time: "9:00 PM", activity: "Grand reveal of the champion bakery" },
+    ],
+  },
+  {
+    id: "late-night-diner-philosophy",
+    title: "24-Hour Neon Diner Philosophy Club",
+    favoriteTitle: "24-Hour Diner Club",
+    category: "couch",
+    mood: "Cozy",
+    energy: "low",
+    company: "friends",
+    budget: "budget",
+    duration: "3 hours",
+    description:
+      "Slide into a squeaky vinyl booth at an all-night diner at 11 PM. Order endless coffee refills and stack of buttermilk pancakes while discussing life's deepest questions.",
+    image:
+      "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.9k",
+    matchScore: 100,
+    isSurprise: true,
+    surpriseRule: "Rule: Phone stack on the center of the table. First person to touch their phone pays for the pancake stack.",
+    tags: ["🥞 24-Hour Diner", "Deep Talks", "Pancakes", "Vinyl Booth"],
+    timeline: [
+      { time: "10:30 PM", activity: "Claim the vintage corner vinyl booth" },
+      { time: "11:00 PM", activity: "Buttermilk pancakes, curly fries & bottomless coffee" },
+      { time: "12:00 AM", activity: "Late-night philosophy, trivia, & nostalgic playlists" },
+    ],
+  },
+  {
+    id: "flashlight-glow-park",
+    title: "Adult Flashlight Tag & Childhood Games",
+    favoriteTitle: "Flashlight Tag Night",
+    category: "reset",
+    mood: "Outdoors",
+    energy: "high",
+    company: "friends",
+    budget: "free",
+    duration: "2.5 hours",
+    description:
+      "Crack neon glowsticks, grab flashlights, and head to a quiet neighborhood park for high-stakes games of Capture the Flag and Manhunt under the moon.",
+    image:
+      "https://images.unsplash.com/photo-1506869640319-fe1a24fd76dc?w=800&auto=format&fit=crop&q=80",
+    peopleCount: "2.6k",
+    matchScore: 100,
+    isSurprise: true,
+    surpriseRule: "Rule: Glowstick bracelets must stay illuminated at all times. Tagging requires shouting your best movie one-liner.",
+    tags: ["🔦 Glow Tag", "Childhood Games", "Moonlit Park", "High Energy"],
+    timeline: [
+      { time: "8:00 PM", activity: "Suit up in dark clothes & crack neon glowsticks" },
+      { time: "8:30 PM", activity: "Round 1: Full-park Capture the Flag" },
+      { time: "9:30 PM", activity: "Cool down with cold sodas on the park swings" },
     ],
   },
 ];

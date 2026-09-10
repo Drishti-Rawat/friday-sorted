@@ -88,7 +88,7 @@ A focused full-screen interactive wizard to generate the perfect night:
 - **Step 1: Mood & Vibe**: Choose your Friday headspace (Unwind & Cozy, Good Food & Drinks, Party & Social, Outdoor Adventure, etc.).
 - **Step 2: Energy Level**: Dial in your battery (🛋️ Low / Chill, 🚶 Medium / Explorer, ⚡ High / Full Send).
 - **Step 3: Company**: Pick your crew (Solo recharge, Partner date night, Small group, Big squad).
-- **Smart Recommendation Engine**: Matches user answers against a database of curated Friday experiences.
+- **Smart Recommendation Engine**: Matches user answers against an expanded database of **32+ curated Friday experiences** and **10 wildcard adventures**, covering every combination of mood, energy, company, and budget.
 - **Detailed Itinerary View**:
   - **Hero Banner**: High-res photography with category tag, vibe badge, and heart save toggle.
   - **Timeline Itinerary**: Hour-by-hour schedule breakdown for the evening.

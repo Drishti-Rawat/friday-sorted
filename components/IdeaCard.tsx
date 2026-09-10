@@ -60,12 +60,12 @@ export default function IdeaCard({
       className={`group flex flex-col bg-white rounded-3xl overflow-hidden border border-dark/8 shadow-sm cursor-pointer select-none ${className}`}
     >
       {/* Top Image Container */}
-      <div className="relative w-full h-48 sm:h-56 overflow-hidden bg-cream">
+      <div className="relative w-full h-44 sm:h-52 md:h-48 lg:h-56 overflow-hidden bg-cream">
         <Image
           src={idea.image}
           alt={idea.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 380px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
@@ -100,9 +100,13 @@ export default function IdeaCard({
       </div>
 
       {/* Card Content */}
-      <div className="p-5 sm:p-6 flex flex-col justify-between flex-1">
+      <div className="p-4 sm:p-5 lg:p-6 flex flex-col justify-between flex-1">
         <div>
-          <h3 className="font-serif font-black text-xl sm:text-2xl text-dark tracking-tight group-hover:text-primary transition-colors leading-tight">
+          <h3 className={`font-serif font-black text-xl sm:text-2xl tracking-tight leading-tight transition-colors ${
+            variant === "wildcard"
+              ? "text-dark"
+              : "text-dark group-hover:text-primary"
+          }`}>
             {idea.favoriteTitle || idea.title}
           </h3>
 

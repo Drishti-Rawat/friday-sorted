@@ -96,14 +96,14 @@ export default function Header({
           />
         </Link>
 
-        {/* Desktop Navigation Links: Real links to currently displayed sections */}
-        <nav className="hidden md:flex items-center gap-8 lg:gap-9">
+        {/* Desktop & Tablet Navigation Links */}
+        <nav className="hidden md:flex items-center gap-5 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.targetId, link.href)}
-              className="text-dark/80 text-[15px] font-medium transition-colors duration-200 hover:text-primary cursor-pointer py-1 select-none"
+              className="text-dark/80 text-sm lg:text-[15px] font-medium transition-colors duration-200 hover:text-primary cursor-pointer py-1 select-none"
             >
               <span>{link.name}</span>
             </Link>
@@ -111,7 +111,7 @@ export default function Header({
         </nav>
 
         {/* Right Area: Saved Capsule & CTA Button */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2.5 lg:gap-3">
           {/* Saved collection drawer trigger */}
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -120,7 +120,7 @@ export default function Header({
               soundFX.playPop();
               onSavedClick?.();
             }}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-1.5 px-3 lg:px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
               savedCount > 0
                 ? "bg-white border border-secondary/40 text-secondary shadow-xs hover:bg-secondary/5"
                 : "bg-white/60 border border-dark/15 text-dark/70 hover:text-dark hover:border-dark/30"
@@ -139,7 +139,7 @@ export default function Header({
               soundFX.playPop();
               onFindClick?.();
             }}
-            className="inline-flex items-center gap-2 bg-dark text-cream text-[15px] font-semibold px-6 py-2.5 rounded-full shadow-sm hover:bg-primary hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center gap-2 bg-dark text-cream text-xs md:text-sm lg:text-[15px] font-semibold px-4 md:px-5 lg:px-6 py-2 md:py-2.5 rounded-full shadow-sm hover:bg-primary hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 cursor-pointer"
           >
             <span>{currentView === "landing" ? "Find My Friday" : "New Friday Plan"}</span>
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

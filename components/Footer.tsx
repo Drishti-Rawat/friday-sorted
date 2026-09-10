@@ -45,14 +45,14 @@ export default function Footer({ onNavigateIdeas, onSavedClick, onSurpriseClick 
   };
 
   return (
-    <footer className="w-full bg-[#FAF3EC] border-t border-dark/10 pt-14 pb-10 mt-auto select-none">
+    <footer className="w-full bg-[#FAF3EC] border-t border-dark/10 pt-10 sm:pt-14 pb-10 mt-auto select-none">
       <div className="max-w-[1280px] mx-auto px-6 sm:px-10 lg:px-12">
-        
-        {/* Main 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-12 border-b border-dark/10">
-          
-          {/* Col 1: Brand, Tagline, Vibe Chips */}
-          <div className="md:col-span-6 lg:col-span-5 flex flex-col items-start">
+
+        {/* Main Grid: 1-col → 2-col (md) → 3-col (lg) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-12 pb-10 sm:pb-12 border-b border-dark/10">
+
+          {/* Brand Column */}
+          <div className="md:col-span-1 lg:col-span-5 flex flex-col items-start">
             <Link href="/" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="inline-block group mb-4">
               <Image
                 src="/logo.png"
@@ -63,102 +63,77 @@ export default function Footer({ onNavigateIdeas, onSavedClick, onSurpriseClick 
               />
             </Link>
 
-            <p className="text-dark/75 text-sm sm:text-base leading-relaxed max-w-md mb-5">
-              Your Friday night, officially sorted. Handcrafted adventures, cozy couch rituals, and spontaneous plans so you can close your laptop and make the weekend count.
+            <p className="text-dark/75 text-sm leading-relaxed max-w-xs md:max-w-sm mb-5">
+              Your Friday night, officially sorted. Handcrafted adventures, cozy rituals, and spontaneous plans to make your weekend count.
             </p>
 
             {/* Vibe Tags */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">
-                🛋️ Low-Key Chill
-              </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">
-                ⚡ Full Send
-              </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">
-                🎲 Spontaneous
-              </span>
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">
-                🍷 Date Night
-              </span>
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">🛋️ Low-Key Chill</span>
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">⚡ Full Send</span>
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">🎲 Spontaneous</span>
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/80 border border-dark/8 text-xs font-semibold text-dark/70 shadow-2xs">🍷 Date Night</span>
             </div>
           </div>
 
-          {/* Col 2: Explore Navigation Links */}
-          <div className="md:col-span-3 lg:col-span-3">
-            <h4 className="text-xs font-black uppercase tracking-widest text-dark/50 mb-4">
-              Explore
-            </h4>
-            <ul className="space-y-3 text-sm font-semibold text-dark/80">
-              <li>
-                <button
-                  onClick={() => handleNav("ideas")}
-                  className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Sparkles className="w-3.5 h-3.5 text-primary" />
-                  <span>Explore Ideas by Mood</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("favorites")}
-                  className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Heart className="w-3.5 h-3.5 text-secondary" />
-                  <span>Friday Favorites</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNav("wildcard")}
-                  className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Dices className="w-3.5 h-3.5 text-accent" />
-                  <span>Wild Card Spontaneous Mode</span>
-                </button>
-              </li>
-            </ul>
-          </div>
+          {/* Nav Columns: side-by-side sub-grid on tablet, individual cols on desktop */}
+          <div className="md:col-span-1 lg:col-span-7 grid grid-cols-2 lg:grid-cols-2 gap-6 lg:gap-8">
 
-          {/* Col 3: Plan & Quick Tools */}
-          <div className="md:col-span-3 lg:col-span-4">
-            <h4 className="text-xs font-black uppercase tracking-widest text-dark/50 mb-4">
-              Friday Toolkit
-            </h4>
-            <ul className="space-y-3 text-sm font-semibold text-dark/80">
-              <li>
-                <Link
-                  href="/planner"
-                  className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Compass className="w-3.5 h-3.5 text-primary" />
-                  <span>Interactive Vibe Quiz</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/planner?surprise=true"
-                  className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5"
-                >
-                  <Dices className="w-3.5 h-3.5 text-secondary" />
-                  <span>Instant Surprise Itinerary</span>
-                </Link>
-              </li>
-              {onSavedClick && (
+            {/* Explore */}
+            <div className="lg:col-span-1">
+              <h4 className="text-xs font-black uppercase tracking-widest text-dark/50 mb-3 sm:mb-4">Explore</h4>
+              <ul className="space-y-2.5 sm:space-y-3 text-sm font-semibold text-dark/80">
                 <li>
-                  <button
-                    onClick={() => {
-                      soundFX.playPop();
-                      onSavedClick();
-                    }}
-                    className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5 text-left"
-                  >
-                    <Heart className="w-3.5 h-3.5 text-secondary" fill="currentColor" />
-                    <span>Saved Weekend Vault</span>
+                  <button onClick={() => handleNav("ideas")} className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <span>Explore by Mood</span>
                   </button>
                 </li>
-              )}
-            </ul>
+                <li>
+                  <button onClick={() => handleNav("favorites")} className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5">
+                    <Heart className="w-3.5 h-3.5 text-secondary shrink-0" />
+                    <span>Friday Favorites</span>
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => handleNav("wildcard")} className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5">
+                    <Dices className="w-3.5 h-3.5 text-accent shrink-0" />
+                    <span>Wild Card Mode</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Friday Toolkit */}
+            <div className="lg:col-span-1">
+              <h4 className="text-xs font-black uppercase tracking-widest text-dark/50 mb-3 sm:mb-4">Friday Toolkit</h4>
+              <ul className="space-y-2.5 sm:space-y-3 text-sm font-semibold text-dark/80">
+                <li>
+                  <Link href="/planner" className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5">
+                    <Compass className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <span>Vibe Quiz</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/planner?surprise=true" className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5">
+                    <Dices className="w-3.5 h-3.5 text-secondary shrink-0" />
+                    <span>Surprise Itinerary</span>
+                  </Link>
+                </li>
+                {onSavedClick && (
+                  <li>
+                    <button
+                      onClick={() => { soundFX.playPop(); onSavedClick(); }}
+                      className="hover:text-primary transition-colors cursor-pointer flex items-center gap-1.5 text-left"
+                    >
+                      <Heart className="w-3.5 h-3.5 text-secondary shrink-0" fill="currentColor" />
+                      <span>Saved Vault</span>
+                    </button>
+                  </li>
+                )}
+              </ul>
+            </div>
+
           </div>
 
         </div>
