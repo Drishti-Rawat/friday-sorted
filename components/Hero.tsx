@@ -76,16 +76,7 @@ export default function Hero({ onFindClick }: HeroProps) {
       <div className="absolute left-[42%] top-1/2 -translate-y-1/2 w-80 h-80 bg-primary/14 rounded-full blur-3xl pointer-events-none -z-10" />
       <div className="absolute right-8 top-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-bl from-primary/15 via-secondary/15 to-accent/20 rounded-full blur-3xl pointer-events-none -z-10" />
 
-      {/* 3. Center Floating Star Doodle in theme accent color */}
-      <motion.div
-        animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.12, 1] }}
-        transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-        className="absolute bottom-16 left-[44%] hidden lg:block text-accent pointer-events-none z-20 select-none"
-      >
-        <svg viewBox="0 0 40 40" fill="none" className="w-8 h-8 stroke-current stroke-2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="20,4 24,14 35,15 27,23 30,34 20,28 10,34 13,23 5,15 16,14" />
-        </svg>
-      </motion.div>
+
 
       {/* 4. Main Content Container */}
       <div className="max-w-[1280px] w-full mx-auto px-4 sm:px-8 lg:px-12">
@@ -291,18 +282,7 @@ export default function Hero({ onFindClick }: HeroProps) {
               </svg>
             </div>
 
-            {/* Accent 4-point Sparkle near Smiley */}
-            <div className="absolute bottom-6 left-12 hidden lg:block select-none pointer-events-none z-20">
-              <motion.div
-                animate={{ rotate: [0, 90, 180, 270, 360], scale: [1, 1.15, 1] }}
-                transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
-                className="text-accent"
-              >
-                <svg viewBox="0 0 32 32" fill="none" className="w-7 h-7">
-                  <path d="M16 2 L19 13 L30 16 L19 19 L16 30 L13 19 L2 16 L13 13 Z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
-                </svg>
-              </motion.div>
-            </div>
+
 
             {/* Hero Collage Graphic: 3D Tilt enabled only on desktop (lg:) to prevent texture blur on sm/mobile devices */}
             <motion.div

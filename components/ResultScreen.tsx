@@ -454,7 +454,7 @@ export default function ResultScreen({
 
                 {/* Description */}
                 <p
-                  className={`text-dark/75 text-xs sm:text-sm font-normal mt-1.5 leading-relaxed line-clamp-2 transition-all duration-150 ${
+                  className={`text-dark/75 text-xs sm:text-sm font-normal mt-1.5 leading-relaxed transition-all duration-150 ${
                     isShuffling ? "blur-[1.5px] opacity-70" : "blur-0 opacity-100"
                   }`}
                 >
@@ -523,7 +523,7 @@ export default function ResultScreen({
                         <span className="font-bold text-dark shrink-0 min-w-[58px]">
                           {item.time}
                         </span>
-                        <span className="text-dark/80 line-clamp-1">{item.activity}</span>
+                        <span className="text-dark/80 leading-snug">{item.activity}</span>
                       </div>
                     ))}
                   </div>
